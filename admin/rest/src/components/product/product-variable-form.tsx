@@ -258,7 +258,7 @@ export default function ProductVariableForm({
                           className="mb-5"
                         />
                       </div>
-                      <div>
+                      {/* <div>
                         <Label>
                           {t('form:input-label-image')}
                           {' and size should not be more than'} &nbsp;
@@ -350,7 +350,7 @@ export default function ProductVariableForm({
                           )}
                           label={t('form:input-label-disable-variant')}
                         />
-                      </div>
+                      </div>  */}
                     </div>
                   );
                 },
