@@ -15,7 +15,8 @@ import { Routes } from '@/config/routes';
 import { toast } from 'react-toastify';
 
 type FormValues = {
-  name: string;
+  first_name: string;
+  last_name: string;
   email: string;
   password: string;
   // permission: Permission;
@@ -42,10 +43,11 @@ const CustomerCreateForm = () => {
     resolver: yupResolver(customerValidationSchema),
   });
 
-  async function onSubmit({ name, email, password }: FormValues) {
+  async function onSubmit({ first_name, last_name, email, password }: FormValues) {
     registerUser(
       {
-        name,
+        first_name,
+        last_name,
         email,
         password,
         // permission: Permission.StoreOwner,
@@ -79,12 +81,21 @@ const CustomerCreateForm = () => {
 
         <Card className="w-full sm:w-8/12 md:w-2/3">
           <Input
-            label={t('form:input-label-name')}
-            {...register('name')}
+            label={t('form:input-label-first-name')}
+            {...register('first_name')}
             type="text"
             variant="outline"
             className="mb-4"
-            error={t(errors.name?.message!)}
+            error={t(errors.first_name?.message!)}
+            required
+          />
+          <Input
+            label={t('form:input-label-last-name')}
+            {...register('last_name')}
+            type="text"
+            variant="outline"
+            className="mb-4"
+            error={t(errors.last_name?.message!)}
             required
           />
           <Input

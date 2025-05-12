@@ -2,7 +2,8 @@ import * as yup from 'yup';
 import { passwordRules } from '@/utils/constants';
 
 export const customerValidationSchema = yup.object().shape({
-  name: yup.string().required('form:error-name-required'),
+  first_name: yup.string().required('form:error-first-name-required'),
+  last_name: yup.string().required('form:error-last-name-required'),
   email: yup
     .string()
     .email('form:error-email-format')

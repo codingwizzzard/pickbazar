@@ -1518,7 +1518,8 @@ export interface ContactDetailsInput {
 export interface RegisterInput {
   email: string;
   password: string;
-  name: string;
+  first_name: string;
+  last_name: string;
   shop_id?: number;
   // permission: Permission;
 }
