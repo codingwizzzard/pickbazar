@@ -28,8 +28,8 @@ export default function ProductSimpleForm({ initialValues, settings }: IProps) {
   const { locale } = useRouter();
   const isTranslateProduct = locale !== Config.defaultLanguage;
 
-  const is_digital = watch('is_digital');
-  const is_external = watch('is_external');
+  // const is_digital = watch('is_digital');
+  // const is_external = watch('is_external');
   const is_update_message = watch('inform_purchased_customer');
 
   return (
@@ -87,7 +87,7 @@ export default function ProductSimpleForm({ initialValues, settings }: IProps) {
           disabled={isTranslateProduct}
         />
 
-        <Input
+        {/* <Input
           label={t('form:input-label-width')}
           {...register('width')}
           error={t(errors.width?.message!)}
@@ -187,7 +187,7 @@ export default function ProductSimpleForm({ initialValues, settings }: IProps) {
               className="mb-5"
             />
           </div>
-        ) : null}
+        ) : null}  */}
       </Card>
     </div>
   );

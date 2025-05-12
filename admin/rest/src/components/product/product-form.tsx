@@ -58,6 +58,7 @@ import StickyFooterPanel from '@/components/ui/sticky-footer-panel';
 import { ProductDescriptionSuggestion } from '@/components/product/product-ai-prompt';
 import RichTextEditor from '@/components/ui/wysiwyg-editor/editor';
 import TooltipLabel from '@/components/ui/tooltip-label';
+import ProductInfo from './product-info';
 
 type ProductFormProps = {
   initialValues?: Product | null;
@@ -542,6 +543,10 @@ export default function CreateOrUpdateProductForm({
 
             <ProductTypeInput />
           </div>
+
+          {product_type?.value === ProductType.Variable && (
+            <ProductInfo initialValues={initialValues} settings={options} />
+          )}
 
           {/* Simple Type */}
           {product_type?.value === ProductType.Simple && (

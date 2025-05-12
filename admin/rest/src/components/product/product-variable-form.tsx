@@ -55,6 +55,7 @@ export default function ProductVariableForm({
 }: IProps) {
   const { t } = useTranslation();
   const { locale } = useRouter();
+  const isTranslateProduct = locale !== Config.defaultLanguage;
   const {
     // @ts-ignore
     settings: { options },
