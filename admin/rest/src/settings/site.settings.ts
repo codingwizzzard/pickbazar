@@ -204,11 +204,11 @@ export const siteSettings = {
             label: 'sidebar-nav-item-manufacturers',
             icon: 'ManufacturersIcon',
           },
-          {
-            href: Routes.author.list,
-            label: 'sidebar-nav-item-authors',
-            icon: 'AuthorIcon',
-          },
+          // {
+          //   href: Routes.author.list,
+          //   label: 'sidebar-nav-item-authors',
+          //   icon: 'AuthorIcon',
+          // },
         ],
       },
 
