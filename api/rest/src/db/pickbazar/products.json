@@ -3,6 +3,13 @@
     "id": 1,
     "name": "Apples",
     "slug": "apples",
+    "categories" : [
+      {
+        "id": 2,
+        "name": "Fruits",
+        "slug": "fruits" 
+      }
+    ],
     "type": {
       "id": 1,
       "name": "Grocery",
@@ -48,6 +55,13 @@
     "id": 2,
     "name": "Baby Spinach",
     "slug": "baby-spinach",
+    "categories" : [
+      {
+        "id": 3,
+        "name": "Vegetables",
+        "slug": "vegetables" 
+      }
+    ],
     "type": {
       "id": 1,
       "name": "Grocery",
@@ -20535,7 +20549,7 @@
       "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/475/Oliver.png",
       "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/475/conversions/Oliver-thumbnail.jpg"
     },
-    "status": "publish",
+    "status": "draft",
     "price": 50,
     "quantity": 30,
     "unit": "1 pc(s)",
