@@ -94,7 +94,7 @@ const Search: React.FC<SearchProps> = ({
         id="search"
         {...register('searchText')}
         className={twMerge(rootClassName)}
-        placeholder={placeholderText ?? t('form:input-placeholder-search')}
+        placeholder={placeholderText ?? t('form:input-placeholder-search-name')}
         aria-label="Search"
         autoComplete="off"
         {...rest}

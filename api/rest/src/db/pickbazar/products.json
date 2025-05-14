@@ -139,7 +139,7 @@
       "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/3/blueberries.jpg",
       "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/3/conversions/blueberries-thumbnail.jpg"
     },
-    "status": "publish",
+    "status": "draft",
     "price": 3,
     "quantity": 30,
     "unit": "1lb",
