@@ -37,6 +37,28 @@
     "sale_price": 1.6,
     "max_price": 2,
     "min_price": 2,
+    "gallery": [
+      {
+        "id": "1",
+        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1/Apples.jpg",
+        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1/conversions/Apples-thumbnail.jpg"
+      },
+      {
+        "id": "2",
+        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/2/BabySpinach.jpg",
+        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/2/conversions/BabySpinach-thumbnail.jpg"
+      },
+      {
+        "id": "3",
+        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/3/blueberries.jpg",
+        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/3/conversions/blueberries-thumbnail.jpg"
+      },
+      {
+        "id": "4",
+        "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/4/BrusselsSprouts.jpg",
+        "thumbnail": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/4/conversions/BrusselsSprouts-thumbnail.jpg"
+      }
+    ],
     "image": {
       "id": "1",
       "original": "https://pickbazarlaravel.s3.ap-southeast-1.amazonaws.com/1/Apples.jpg",
@@ -45,11 +67,12 @@
     "status": "publish",
     "price": 2,
     "quantity": 16,
-    "unit": "kg",
+    "unit": "1 kg",
     "sku": "1",
     "sold_quantity": 2,
     "in_flash_sale": 0,
-    "visibility": "visibility_public"
+    "visibility": "visibility_public",
+    "description": "An apple is a sweet, edible fruit produced by an apple tree (Malus domestica). Apple trees are ... The skin of ripe apples is generally red, yellow, green, pink, or russetted, though many bi- or tri-colored cultivars may be found."
   },
   {
     "id": 2,
