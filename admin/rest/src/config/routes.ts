@@ -49,9 +49,9 @@ export const Routes = {
   abuseReviewsReport: {
     ...routesFactory('/abusive_reports/reject'),
   },
-  author: {
-    ...routesFactory('/authors'),
-  },
+  // author: {
+  //   ...routesFactory('/authors'),
+  // },
   coupon: {
     ...routesFactory('/coupons'),
   },

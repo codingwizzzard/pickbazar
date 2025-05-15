@@ -690,12 +690,12 @@ export const siteSettings = {
             icon: 'DiaryIcon',
             permissions: adminAndOwnerOnly,
           },
-          {
-            href: (shop: string) => `/${shop}${Routes.author.list}`,
-            label: 'sidebar-nav-item-authors',
-            icon: 'FountainPenIcon',
-            permissions: adminAndOwnerOnly,
-          },
+          // {
+          //   href: (shop: string) => `/${shop}${Routes.author.list}`,
+          //   label: 'sidebar-nav-item-authors',
+          //   icon: 'FountainPenIcon',
+          //   permissions: adminAndOwnerOnly,
+          // },
         ],
       },
 
@@ -959,12 +959,12 @@ export const siteSettings = {
             icon: 'DiaryIcon',
             permissions: adminAndOwnerOnly,
           },
-          {
-            href: (shop: string) => `/${shop}${Routes.author.list}`,
-            label: 'sidebar-nav-item-authors',
-            icon: 'FountainPenIcon',
-            permissions: adminAndOwnerOnly,
-          },
+          // {
+          //   href: (shop: string) => `/${shop}${Routes.author.list}`,
+          //   label: 'sidebar-nav-item-authors',
+          //   icon: 'FountainPenIcon',
+          //   permissions: adminAndOwnerOnly,
+          // },
         ],
       },
 
@@ -1135,6 +1135,12 @@ export const siteSettings = {
         href: Routes?.ownerDashboardMyShop,
         label: 'common:sidebar-nav-item-my-shops',
         icon: 'MyShopOwnerIcon',
+        permissions: ownerAndStaffOnly,
+      },
+      {
+        href: Routes?.category.list,
+        label: 'common:sidebar-nav-item-categories',
+        icon: 'CategoriesIcon',
         permissions: ownerAndStaffOnly,
       },
       {

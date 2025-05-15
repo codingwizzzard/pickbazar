@@ -101,9 +101,9 @@ const SelectCustomer = dynamic(
   () => import('@/components/checkout/customer/select-customer'),
 );
 
-const AuthorDeleteView = dynamic(
-  () => import('@/components/author/author-delete-view'),
-);
+// const AuthorDeleteView = dynamic(
+//   () => import('@/components/author/author-delete-view'),
+// );
 const ManufacturerDeleteView = dynamic(
   () => import('@/components/manufacturer/manufacturer-delete-view'),
 );
@@ -185,8 +185,8 @@ function renderModal(view: MODAL_VIEWS | undefined, data: any) {
       return <TagDeleteView />;
     case 'DELETE_MANUFACTURER':
       return <ManufacturerDeleteView />;
-    case 'DELETE_AUTHOR':
-      return <AuthorDeleteView />;
+    // case 'DELETE_AUTHOR':
+    //   return <AuthorDeleteView />;
     case 'BAN_CUSTOMER':
       return <BanCustomerView />;
     case 'SHOP_APPROVE_VIEW':
