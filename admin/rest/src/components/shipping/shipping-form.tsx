@@ -75,10 +75,11 @@ export default function CreateOrUpdateShippingForm({ initialValues }: IProps) {
             error={t(errors.name?.message!)}
             variant="outline"
             className="mb-5"
+            required
           />
 
           <div className="mb-5">
-            <Label>{t('form:input-label-type')}</Label>
+            <Label>{t('form:input-label-type')} *</Label>
             <Radio
               label={t('form:input-label-free')}
               {...register('type')}
@@ -108,6 +109,7 @@ export default function CreateOrUpdateShippingForm({ initialValues }: IProps) {
               error={t(errors.amount?.message!)}
               variant="outline"
               className="mb-5"
+              required
             />
           )}
         </Card>
