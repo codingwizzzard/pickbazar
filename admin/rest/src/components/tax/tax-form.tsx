@@ -94,16 +94,16 @@ export default function CreateOrUpdateTaxForm({ initialValues }: IProps) {
             className="mb-5"
           />
           <Input
-            label={t('form:input-label-city')}
-            {...register('city')}
-            error={t(errors.city?.message!)}
+            label={t('form:input-label-state')}
+            {...register('state')}
+            error={t(errors.state?.message!)}
             variant="outline"
             className="mb-5"
           />
           <Input
-            label={t('form:input-label-state')}
-            {...register('state')}
-            error={t(errors.state?.message!)}
+            label={t('form:input-label-city')}
+            {...register('city')}
+            error={t(errors.city?.message!)}
             variant="outline"
             className="mb-5"
           />
