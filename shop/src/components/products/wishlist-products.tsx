@@ -126,12 +126,13 @@ function WishlistItem({ product }: { product: Product }) {
             )}
             <span className="flex h-7 w-px border-r border-dashed border-gray-300" />
             <button
-              className="whitespace-nowrap text-sm font-semibold text-red-500 hover:underline sm:mt-0"
-              onClick={() => removeFromWishlist(product?.id)}
-              disabled={isLoading}
-            >
-              {t('text-remove')}
-            </button>
+  className="whitespace-nowrap text-sm font-semibold text-red-500 hover:underline sm:mt-0"
+  onClick={() => removeFromWishlist({ shop_product_variant_id: product.id.toString() })}
+  disabled={isLoading}
+>
+  {t('text-remove')}
+</button>
+
           </div>
         </div>
       </div>

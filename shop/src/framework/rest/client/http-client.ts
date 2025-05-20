@@ -18,7 +18,7 @@ Axios.interceptors.request.use((config) => {
   //@ts-ignore
   config.headers = {
     ...config.headers,
-    Authorization: `Bearer ${token ? token : ''}`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjUsInJvbGVfaWQiOjMsImVtYWlsIjoiY3VzdG9tZXIxQGdtYWlsLmNvbSIsImlhdCI6MTc0NzUxMDQ1MywiZXhwIjoxNzc5MDQ2NDUzfQ.LbaFa_vi39CMC0W6xUKAkZIUj6YeB6XBK7JQhHUc_lQ`,
   };
   return config;
 });
@@ -56,7 +56,7 @@ export class HttpClient {
     return response.data;
   }
 
-  static async delete<T>(url: string) {
+  static async delete<T>(url: string, p0: { data: { shop_product_variant_id: string; }; }) {
     const response = await Axios.delete<T>(url);
     return response.data;
   }

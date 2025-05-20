@@ -13,18 +13,23 @@ import { API_ENDPOINTS } from './client/api-endpoints';
 import { mapPaginatorData } from './utils/data-mappers';
 import { useRouter } from 'next/router';
 
-export function useToggleWishlist(product_id: string) {
+export function useToggleWishlist() {
   const queryClient = useQueryClient();
   const { t } = useTranslation('common');
+  
   const {
     mutate: toggleWishlist,
     isLoading,
     isSuccess,
   } = useMutation(client.wishlist.toggle, {
-    onSuccess: (data) => {
-      queryClient.setQueryData(
-        [`${API_ENDPOINTS.WISHLIST}/in_wishlist`, product_id],
-        (old: any) => !old
+    onSuccess: (data, variables) => {
+      // Invalidate the wishlist query to force refetch
+      queryClient.invalidateQueries([API_ENDPOINTS.USERS_WISHLIST_TOGGLE]);
+      
+      toast.success(
+        data.in_wishlist 
+          ? t('text-added-to-wishlist') 
+          : t('text-removed-from-wishlist')
       );
     },
     onError: (error) => {
@@ -36,22 +41,47 @@ export function useToggleWishlist(product_id: string) {
 
   return { toggleWishlist, isLoading, isSuccess };
 }
+// export function useRemoveFromWishlist() {
+//   const { t } = useTranslation('common');
+//   const queryClient = useQueryClient();
 
+//   const {
+//     mutate: removeFromWishlist,
+//     isLoading,
+//     isSuccess,
+//   } = useMutation(client.wishlist.remove, {
+//     onSuccess: () => {
+//       toast.success(`${t('text-removed-from-wishlist')}`);
+//       queryClient.invalidateQueries([API_ENDPOINTS.USERS_WISHLIST_TOGGLE]);
+//     },
+//     onError: (error) => {
+//       if (axios.isAxiosError(error)) {
+//         toast.error(`${t(error.response?.data.message)}`);
+//       }
+//     },
+//   });
+
+//   return { removeFromWishlist, isLoading, isSuccess };
+// }
 export function useRemoveFromWishlist() {
   const { t } = useTranslation('common');
   const queryClient = useQueryClient();
+
   const {
     mutate: removeFromWishlist,
     isLoading,
     isSuccess,
   } = useMutation(client.wishlist.remove, {
     onSuccess: () => {
-      toast.success(`${t('text-removed-from-wishlist')}`);
-      queryClient.refetchQueries([API_ENDPOINTS.USERS_WISHLIST]);
+      toast.success(t('text-removed-from-wishlist'));
+      
+      // Invalidate both the wishlist and in_wishlist queries
+      queryClient.invalidateQueries([API_ENDPOINTS.USERS_WISHLIST_TOGGLE]);
+      queryClient.invalidateQueries([`${API_ENDPOINTS.USERS_WISHLIST_TOGGLE}/in_wishlist`]);
     },
     onError: (error) => {
       if (axios.isAxiosError(error)) {
-        toast.error(`${t(error.response?.data.message)}`);
+        toast.error(t(error.response?.data.message));
       }
     },
   });
@@ -76,7 +106,7 @@ export function useWishlist(options?: WishlistQueryOptions) {
     isFetching,
     isFetchingNextPage,
   } = useInfiniteQuery<WishlistPaginator, Error>(
-    [API_ENDPOINTS.USERS_WISHLIST, formattedOptions],
+    [API_ENDPOINTS.USERS_WISHLIST_TOGGLE, formattedOptions],
     ({ queryKey, pageParam }) =>
       client.wishlist.all(Object.assign({}, queryKey[1], pageParam)),
     {
@@ -103,14 +133,14 @@ export function useWishlist(options?: WishlistQueryOptions) {
 
 export function useInWishlist({
   enabled,
-  product_id,
+  shop_product_variant_id,
 }: {
-  product_id: string;
+  shop_product_variant_id: string;
   enabled: boolean;
 }) {
   const { data, isLoading, error, refetch } = useQuery<boolean, Error>(
-    [`${API_ENDPOINTS.WISHLIST}/in_wishlist`, product_id],
-    () => client.wishlist.checkIsInWishlist({ product_id }),
+    [`${API_ENDPOINTS.WISHLIST}/in_wishlist`, shop_product_variant_id],
+    () => client.wishlist.checkIsInWishlist({ shop_product_variant_id }),
     {
       enabled,
     }

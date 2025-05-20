@@ -33,9 +33,23 @@ export const API_ENDPOINTS = {
   USERS_LOGOUT: '/logout',
   USERS_SUBSCRIBE_TO_NEWSLETTER: '/subscribe-to-newsletter',
   USERS_CONTACT_US: '/contact-us',
-  USERS_WISHLIST: '/my-wishlists',
+
+
+  // USERS_WISHLIST: '/my-wishlists',
+
   WISHLIST: '/wishlists',
-  USERS_WISHLIST_TOGGLE: '/wishlists/toggle',
+  // USERS_WISHLIST_TOGGLE: '/user-wishlists',
+
+ USERS_WISHLIST_TOGGLE: '/user-wishlists',
+ 
+ 
+ // Assuming this is correct for toggling
+  // USERS_WISHLIST: '/api/user-wishlists',     // This might be for fetching the wishlist
+  // WISHLIST: '/api/wishlists',               // Base for individual wishlist items
+  // // **UPDATE THIS LINE based on your backend's API for adding**
+  // ADD_TO_WISHLIST: '/api/wishlists', 
+
+
   SOCIAL_LOGIN: '/social-login-token',
   SEND_OTP_CODE: '/send-otp-code',
   VERIFY_OTP_CODE: '/verify-otp-code',

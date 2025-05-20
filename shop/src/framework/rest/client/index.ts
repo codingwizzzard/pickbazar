@@ -458,22 +458,21 @@ class Client {
   };
   wishlist = {
     all: (params: WishlistQueryOptions) =>
-      HttpClient.get<WishlistPaginator>(API_ENDPOINTS.USERS_WISHLIST, {
-        with: 'shop',
-        orderBy: 'created_at',
-        sortedBy: 'desc',
+      HttpClient.get<WishlistPaginator>(API_ENDPOINTS.USERS_WISHLIST_TOGGLE, {
         ...params,
       }),
-    toggle: (input: { product_id: string; language?: string }) =>
+    toggle: (input: { shop_product_variant_id: string; language?: string }) =>
       HttpClient.post<{ in_wishlist: boolean }>(
         API_ENDPOINTS.USERS_WISHLIST_TOGGLE,
         input,
       ),
-    remove: (id: string) =>
-      HttpClient.delete<Wishlist>(`${API_ENDPOINTS.WISHLIST}/${id}`),
-    checkIsInWishlist: ({ product_id }: { product_id: string }) =>
+remove: (input: { shop_product_variant_id: string }) =>
+    HttpClient.delete<Wishlist>(API_ENDPOINTS.USERS_WISHLIST_TOGGLE, {
+      data: input, // Send the data in the request body
+    }),
+    checkIsInWishlist: ({ shop_product_variant_id }: { shop_product_variant_id: string }) =>
       HttpClient.get<boolean>(
-        `${API_ENDPOINTS.WISHLIST}/in_wishlist/${product_id}`,
+        `${API_ENDPOINTS.USERS_WISHLIST_TOGGLE}/in_wishlist/${shop_product_variant_id}`,
       ),
   };
   settings = {

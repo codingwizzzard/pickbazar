@@ -13,7 +13,7 @@ import { GetWishlistDto } from './dto/get-wishlists.dto';
 import { UpdateWishlistDto } from './dto/update-wishlists.dto';
 import { WishlistsService } from './wishlists.service';
 
-@Controller('wishlists')
+@Controller('user-wishlists')
 export class WishlistsController {
   constructor(private wishlistService: WishlistsService) {}
 
