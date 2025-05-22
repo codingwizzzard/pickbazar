@@ -113,6 +113,8 @@ export interface ProductQueryOptions extends QueryOptions {
   searchQuery: string;
   text: string;
   visibility: string;
+  pagination: string;
+  search: string;
 }
 
 export interface PopularProductQueryOptions extends QueryOptions {

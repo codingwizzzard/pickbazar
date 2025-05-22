@@ -110,36 +110,29 @@ import { OTPVerifyResponse } from '@/types';
 
 class Client {
   products = {
-    all: ({
-      type,
-      categories,
-      name,
-      shop_id,
-      author,
-      manufacturer,
-      min_price,
-      max_price,
-      tags,
-      ...params
-    }: Partial<ProductQueryOptions>) =>
-      HttpClient.get<ProductPaginator>(API_ENDPOINTS.PRODUCTS, {
-        searchJoin: 'and',
-        with: 'type;author',
-        ...params,
-        search: HttpClient.formatSearchParams({
-          type,
-          categories,
-          name,
-          shop_id,
-          author,
-          manufacturer,
-          min_price,
-          max_price,
-          tags,
-          status: 'publish',
-          visibility: 'visibility_public',
-        }),
-      }),
+   
+  all: ({
+    type,
+    categories,
+    name,
+    shop_id,
+    author,
+    manufacturer,
+    min_price,
+    max_price,
+    tags,
+    pagination,
+    search,
+    category_id,
+    ...params
+  }: Partial<ProductQueryOptions> & { category_id?: string }) =>
+    HttpClient.get<ProductPaginator>(API_ENDPOINTS.PRODUCTS, {
+      ...(typeof pagination !== 'undefined' && { pagination }),
+      ...(typeof shop_id !== 'undefined' && { shop_id }),
+      ...(typeof category_id !== 'undefined' && { category_id }),
+      ...params,
+      ...(search && { search }),
+    }),
     popular: (params: Partial<PopularProductQueryOptions>) =>
       HttpClient.get<Product[]>(API_ENDPOINTS.PRODUCTS_POPULAR, params),
 

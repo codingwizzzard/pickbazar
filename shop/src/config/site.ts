@@ -11,7 +11,7 @@ export const siteSettings = {
     width: 128,
     height: 40,
   },
-  defaultLanguage: 'en',
+  defaultLanguage: '',
   currencyCode: 'USD',
   product: {
     placeholderImage: '/product-placeholder.svg',

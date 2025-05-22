@@ -72,7 +72,7 @@
 // export default FavoriteButton;
 
 
-// === components/common/favorite-button.tsx (Your provided code) ===
+// === components/common/favorite-button.tsx (Your provided code) === 
 import { HeartFillIcon } from '@/components/icons/heart-fill';
 import { HeartOutlineIcon } from '@/components/icons/heart-outline';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
