@@ -6,7 +6,7 @@ import CashOnDelivery from '@/components/checkout/payment/cash-on-delivery';
 import { useAtom } from 'jotai';
 import { paymentGatewayAtom } from '@/store/checkout';
 import cn from 'classnames';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { PaymentGateway } from '@/types';
 import PaymentOnline from '@/components/checkout/payment/payment-online';
 import Image from 'next/image';
@@ -63,11 +63,11 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
   const [gateway, setGateway] = useAtom(paymentGatewayAtom);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const { t } = useTranslation('common');
-  const { settings, isLoading } = useSettings();
+  // const { settings, isLoading } = useSettings();
   // If no payment gateway is set and cash on delivery also disable then cash on delivery will be on by default
-  const isEnableCashOnDelivery =
-    (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
-    settings?.useCashOnDelivery;
+  // const isEnableCashOnDelivery =
+  //   (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
+  //   settings?.useCashOnDelivery;
 
   // FixME
   // @ts-ignore
@@ -108,14 +108,14 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
     },
   };
 
-  useEffect(() => {
-    if (settings?.paymentGateway) {
-      //@ts-ignore
-      setGateway(settings?.paymentGateway?.toUpperCase() as PaymentGateway);
-    } else {
-      setGateway(PaymentGateway.COD);
-    }
-  }, [isLoading, settings?.useCashOnDelivery, settings?.paymentGateway]);
+  // useEffect(() => {
+  //   if (settings?.paymentGateway) {
+  //     //@ts-ignore
+  //     setGateway(settings?.paymentGateway?.toUpperCase() as PaymentGateway);
+  //   } else {
+  //     setGateway(PaymentGateway.COD);
+  //   }
+  // }, [isLoading, settings?.useCashOnDelivery, settings?.paymentGateway]);
 
   const PaymentMethod = AVAILABLE_PAYMENT_METHODS_MAP[gateway];
   const Component = PaymentMethod?.component ?? CashOnDelivery;
@@ -137,7 +137,7 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
         </RadioGroup.Label>
 
         <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
-          {settings?.paymentGateway && (
+          {/* {settings?.paymentGateway && ( */}
             <PaymentGroupOption
               theme={theme}
               payment={
@@ -147,14 +147,14 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
                 ]
               }
             />
-          )}
+          {/* )} */}
 
-          {isEnableCashOnDelivery && (
+          {/* {isEnableCashOnDelivery && ( */}
             <PaymentGroupOption
               theme={theme}
               payment={AVAILABLE_PAYMENT_METHODS_MAP[PaymentGateway.COD]}
             />
-          )}
+          {/* )} */}
         </div>
       </RadioGroup>
       <div>

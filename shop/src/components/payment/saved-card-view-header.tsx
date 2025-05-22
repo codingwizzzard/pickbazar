@@ -2,7 +2,7 @@ import { useModalAction } from '@/components/ui/modal/modal.context';
 import { PlusIcon } from '@/components/icons/plus-icon';
 import { useTranslation } from 'next-i18next';
 import { PaymentGateway, PaymentIntentInfo } from '@/types';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 interface Props {
   paymentIntentInfo: PaymentIntentInfo;
@@ -17,7 +17,7 @@ const SavedCardViewHeader: React.FC<Props> = ({
 }) => {
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   
   const handleAddNewCard = () => {
@@ -50,14 +50,14 @@ const SavedCardViewHeader: React.FC<Props> = ({
             <PlusIcon className="mr-1" width={16} height={16} />
             {t('profile-add-cards')}
           </button>
-          {Boolean(settings?.StripeCardOnly) && (
+          {/* {Boolean(settings?.StripeCardOnly) && ( */}
             <button
               className="flex items-center text-sm font-semibold capitalize text-accent"
               onClick={handleAddNewStripeElement}
             >
               {t('Try another method')}
             </button>
-          )}
+          {/* )} */}
         </div>
       </div>
     </>

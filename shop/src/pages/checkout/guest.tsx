@@ -11,7 +11,7 @@ import Seo from '@/components/seo/seo';
 import { useAtom } from 'jotai';
 import { useEffect } from 'react';
 import GuestName from '@/components/checkout/guest-name';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
 import { useRouter } from 'next/router';
 import { Routes } from '@/config/routes';
@@ -40,22 +40,22 @@ export default function GuestCheckoutPage() {
   const [billingAddress] = useAtom(billingAddressAtom);
   const [shippingAddress] = useAtom(shippingAddressAtom);
   const router = useRouter();
-  const { settings, isLoading } = useSettings();
-  const guestCheckout = settings?.guestCheckout;
-  useEffect(() => {
-    //@ts-ignore
-    resetCheckout();
-    if(!isLoading && !guestCheckout ) {
-     router.replace(Routes.home);
-    }
-  }, [resetCheckout, settings]);
+  // const { settings, isLoading } = useSettings();
+  // const guestCheckout = settings?.guestCheckout;
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   resetCheckout();
+  //   if(!isLoading && !guestCheckout ) {
+  //    router.replace(Routes.home);
+  //   }
+  // }, [resetCheckout, settings]);
 
-  if (isLoading) {
-    return <Spinner showText={false} />;
-  }
+  // if (isLoading) {
+  //   return <Spinner showText={false} />;
+  // }
 
 
-  return guestCheckout && (
+  return  (
     <>
       <Seo noindex={true} nofollow={true} />
       <div className="bg-gray-100 px-4 py-8 lg:py-10 lg:px-8 xl:py-14 xl:px-16 2xl:px-20">

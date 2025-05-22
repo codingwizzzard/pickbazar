@@ -1,15 +1,15 @@
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import { PlusIcon } from '@/components/icons/plus-icon';
 import { useTranslation } from 'next-i18next';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 const CardViewHeader = () => {
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   const handleAddNewCard = () => {
-    openModal('ADD_NEW_CARD', { paymentGateway: settings?.paymentGateway });
+    // openModal('ADD_NEW_CARD', { paymentGateway: settings?.paymentGateway });
   };
 
   return (

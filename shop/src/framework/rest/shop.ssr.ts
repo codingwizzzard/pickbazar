@@ -40,10 +40,10 @@ export const getStaticProps: GetStaticProps<
   const { slug } = params!; //* we know it's required because of getStaticPaths
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
+  // );
   try {
     const shop = await client.shops.get(slug);
     await queryClient.prefetchInfiniteQuery(

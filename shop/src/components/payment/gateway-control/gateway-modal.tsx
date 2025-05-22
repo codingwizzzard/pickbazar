@@ -3,7 +3,7 @@ import {
   useModalAction,
   useModalState,
 } from '@/components/ui/modal/modal.context';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useTranslation } from 'next-i18next';
 import { useGetPaymentIntent } from '@/framework/order';
 import Button from '@/components/ui/button';
@@ -120,7 +120,7 @@ const GatewayModal: React.FC<Props> = ({ buttonSize = 'small' }) => {
   } = useModalState();
   const { closeModal } = useModalAction();
   const [gateway, setGateway] = useState(order?.payment_gateway || '');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const { isLoading, getPaymentIntentQuery } = useGetPaymentIntent({
     tracking_number: order?.tracking_number as string,
     payment_gateway: gateway?.name?.toUpperCase() as string,
@@ -150,7 +150,7 @@ const GatewayModal: React.FC<Props> = ({ buttonSize = 'small' }) => {
             <div className="mb-8 grid grid-cols-2 gap-4 md:grid-cols-3">
               <PaymentGateways
                 theme="bw"
-                settings={settings}
+                // settings={settings}
                 order={order}
                 isLoading={!!isLoading}
               />

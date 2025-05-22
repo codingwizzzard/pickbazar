@@ -476,21 +476,21 @@ class Client {
         `${API_ENDPOINTS.WISHLIST}/in_wishlist/${product_id}`,
       ),
   };
-  settings = {
-    all: (params?: SettingsQueryOptions) =>
-      HttpClient.get<Settings>(API_ENDPOINTS.SETTINGS, { ...params }),
-    upload: (input: File[]) => {
-      let formData = new FormData();
-      input.forEach((attachment) => {
-        formData.append('attachment[]', attachment);
-      });
-      return HttpClient.post<Attachment[]>(API_ENDPOINTS.UPLOADS, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-    },
-  };
+  // settings = {
+  //   all: (params?: SettingsQueryOptions) =>
+  //     HttpClient.get<Settings>(API_ENDPOINTS.SETTINGS, { ...params }),
+  //   upload: (input: File[]) => {
+  //     let formData = new FormData();
+  //     input.forEach((attachment) => {
+  //       formData.append('attachment[]', attachment);
+  //     });
+  //     return HttpClient.post<Attachment[]>(API_ENDPOINTS.UPLOADS, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //     });
+  //   },
+  // };
   cards = {
     all: (params?: any) =>
       HttpClient.get<Card[]>(API_ENDPOINTS.CARDS, { ...params }),

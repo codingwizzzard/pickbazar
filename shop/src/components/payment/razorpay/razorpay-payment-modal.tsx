@@ -4,7 +4,7 @@ import { formatAddress } from '@/lib/format-address';
 import { PaymentGateway, PaymentIntentInfo } from '@/types';
 import { useTranslation } from 'next-i18next';
 import { useModalAction } from '@/components/ui/modal/modal.context';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useOrder, useOrderPayment } from '@/framework/order';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
 
@@ -22,7 +22,7 @@ const RazorpayPaymentModal: React.FC<Props> = ({
   const { t } = useTranslation();
   const { closeModal } = useModalAction();
   const { loadRazorpayScript, checkScriptLoaded } = useRazorpay();
-  const { settings, isLoading: isSettingsLoading } = useSettings();
+  // const { settings, isLoading: isSettingsLoading } = useSettings();
   const { order, isLoading, refetch } = useOrder({
     tracking_number: trackingNumber,
   });
@@ -42,7 +42,7 @@ const RazorpayPaymentModal: React.FC<Props> = ({
       currency: paymentIntentInfo?.currency!,
       name: customer_name!,
       description: `${t('text-order')}#${trackingNumber}`,
-      image: settings?.logo?.original!,
+      // image: settings?.logo?.original!,
       order_id: paymentIntentInfo?.payment_id!,
       handler: async () => {
         closeModal();
@@ -68,17 +68,17 @@ const RazorpayPaymentModal: React.FC<Props> = ({
     };
     const razorpay = (window as any).Razorpay(options);
     return razorpay.open();
-  }, [isLoading, isSettingsLoading]);
+  }, [isLoading]);
 
   useEffect(() => {
-    if (!isLoading && !isSettingsLoading) {
+    if (!isLoading ) {
       (async () => {
         await paymentHandle();
       })();
     }
-  }, [isLoading, isSettingsLoading]);
+  }, [isLoading]);
 
-  if (isLoading || isSettingsLoading) {
+  if (isLoading ) {
     return <Spinner showText={false} />;
   }
 

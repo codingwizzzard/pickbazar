@@ -71,27 +71,27 @@ const Details: React.FC<Props> = ({
   const router = useRouter();
   const { closeModal } = useModalAction();
   const intersectionRef = useRef(null);
-  const intersection = useIntersection(intersectionRef, {
-    root: null,
-    rootMargin: '0px',
-    threshold: 1,
-  });
-  useEffect(() => {
-    if (intersection && intersection.isIntersecting) {
-      setShowStickyShortDetails(false);
-      return;
-    }
-    if (intersection && !intersection.isIntersecting) {
-      setShowStickyShortDetails(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [intersection]);
+  // const intersection = useIntersection(intersectionRef, {
+  //   root: null,
+  //   rootMargin: '0px',
+  //   threshold: 1,
+  // });
+  // useEffect(() => {
+  //   if (intersection && intersection.isIntersecting) {
+  //     setShowStickyShortDetails(false);
+  //     return;
+  //   }
+  //   if (intersection && !intersection.isIntersecting) {
+  //     setShowStickyShortDetails(true);
+  //   }
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [intersection]);
   const { attributes } = useAttributes();
 
-  const { price, basePrice, discount } = usePrice({
-    amount: product?.sale_price ? product?.sale_price : product?.price,
-    baseAmount: product?.price,
-  });
+  // const { price, basePrice, discount } = usePrice({
+  //   amount: product?.sale_price ? product?.sale_price : product?.price,
+  //   baseAmount: product?.price,
+  // });
 
   const navigate = (path: string) => {
     router.push(path);
@@ -132,11 +132,11 @@ const Details: React.FC<Props> = ({
         <div className="p-6 pt-10 md:w-1/2 lg:p-14 xl:p-16">
           <div className="mb-8 flex items-center justify-between lg:mb-10">
             {backBtn && <BackButton />}
-            {discount && (
+            {/* {discount && (
               <div className="rounded-full bg-yellow-500 px-3 text-xs font-semibold leading-6 text-light ltr:ml-auto rtl:mr-auto">
                 {discount}
               </div>
-            )}
+            )} */}
           </div>
 
           <div className="product-gallery h-full">
@@ -222,13 +222,15 @@ const Details: React.FC<Props> = ({
             ) : (
               <span className="my-5 flex items-center md:my-10">
                 <ins className="text-2xl font-semibold text-accent no-underline md:text-3xl">
-                  {price}
+                  {/* {price} */}
+                  {400}
                 </ins>
-                {basePrice && (
+                {/* {basePrice && ( */}
                   <del className="text-sm font-normal text-muted ltr:ml-2 rtl:mr-2 md:text-base">
-                    {basePrice}
+                    {/* {basePrice} */}
+                    {800}
                   </del>
-                )}
+                {/* )} */}
               </span>
             )}
 

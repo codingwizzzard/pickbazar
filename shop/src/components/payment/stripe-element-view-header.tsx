@@ -3,7 +3,7 @@ import { PlusIcon } from '@/components/icons/plus-icon';
 import { useTranslation } from 'next-i18next';
 import { PaymentGateway, PaymentIntentInfo } from '@/types';
 import Button from '../ui/button';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 interface Props {
   paymentIntentInfo: PaymentIntentInfo;
@@ -18,7 +18,7 @@ const StipeElementViewHeader: React.FC<Props> = ({
 }) => {
   const { openModal } = useModalAction();
   const { t } = useTranslation('common');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   const handleAddNewCard = () => {
     openModal('STRIPE_ELEMENT_MODAL', {
@@ -33,14 +33,14 @@ const StipeElementViewHeader: React.FC<Props> = ({
         <h1 className="text-center text-lg font-semibold text-heading sm:text-xl">
           {t('profile-new-cards')}
         </h1>
-        {Boolean(settings?.StripeCardOnly) && (
+        {/* {Boolean(settings?.StripeCardOnly) && ( */}
           <button
             className="flex items-center text-sm font-semibold text-accent capitalize"
             onClick={handleAddNewCard}
           >
             {t('Try another method')}
           </button>
-        )}
+        {/* )} */}
       </div>
     </>
   );

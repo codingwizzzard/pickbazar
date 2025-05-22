@@ -7,12 +7,12 @@ import { useOrder, useOrderPayment } from '@/framework/order';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'next-i18next';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 export { getServerSideProps } from '@/framework/order.ssr';
 
 export default function OrderPage() {
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const { query } = useRouter();
   const { t } = useTranslation();
   const { order, isLoading, isFetching } = useOrder({
@@ -64,11 +64,11 @@ export default function OrderPage() {
   return (
     <>
       <Seo noindex={true} nofollow={true} />
-      <Order
-        settings={settings}
+      {/* <Order
+        // settings={settings}
         order={order}
         loadingStatus={!isLoading && isFetching}
-      />
+      /> */}
     </>
   );
 }

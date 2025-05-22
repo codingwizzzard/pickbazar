@@ -9,7 +9,7 @@ import { getIcon } from '@/lib/get-icon';
 import * as socialIcons from '@/components/icons/social';
 import Seo from '@/components/seo/seo';
 import { Routes } from '@/config/routes';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import Link from '@/components/ui/link';
 import { isObject } from 'lodash';
 import { getLayoutWithFooter } from '@/components/layouts/layout-with-footer';
@@ -17,7 +17,7 @@ export { getStaticProps } from '@/framework/general.ssr';
 
 export const ContactPage = () => {
   const { t } = useTranslation('common');
-  const { settings }: any = useSettings();
+  // const { settings }: any = useSettings();
 
   return (
     <>
@@ -39,7 +39,7 @@ export const ContactPage = () => {
                 {t('text-address')}
               </span>
               <span className="text-sm text-body">
-                {settings?.contactDetails?.location?.formattedAddress ? (
+                {/* {settings?.contactDetails?.location?.formattedAddress ? (
                   <Link
                     title={settings?.contactDetails?.location?.formattedAddress}
                     target="_blank"
@@ -49,7 +49,7 @@ export const ContactPage = () => {
                   </Link>
                 ) : (
                   t('common:text-no-address')
-                )}
+                )} */}
               </span>
             </div>
 
@@ -58,9 +58,9 @@ export const ContactPage = () => {
                 {t('text-phone')}
               </span>
               <span className="text-sm text-body">
-                {settings?.contactDetails?.contact
+                {/* {settings?.contactDetails?.contact
                   ? settings?.contactDetails?.contact
-                  : t('text-no-contact')}
+                  : t('text-no-contact')} */}
               </span>
             </div>
 
@@ -69,12 +69,12 @@ export const ContactPage = () => {
                 Email Address
               </span>
               <span className="text-sm text-body">
-                {settings?.contactDetails?.emailAddress
+                {/* {settings?.contactDetails?.emailAddress
                   ? settings?.contactDetails?.emailAddress
-                  : 'No Email Address'}
+                  : 'No Email Address'} */}
               </span>
             </div>
-            {settings?.contactDetails?.website && (
+            {/* {settings?.contactDetails?.website && (
               <div className="mb-8 flex flex-col">
                 <span className="mb-3 font-semibold text-heading">
                   {t('text-website')}
@@ -93,14 +93,14 @@ export const ContactPage = () => {
                   </Link>
                 </div>
               </div>
-            )}
+            )} */}
 
             <div className="mb-8 flex flex-col">
               <span className="mb-4 font-semibold text-heading">
                 {t('text-follow-us')}
               </span>
               <div className="flex items-center justify-start">
-                {settings?.contactDetails?.socials?.map(
+                {/* {settings?.contactDetails?.socials?.map(
                   (item: any, index: number) =>
                     item?.url ? (
                       <Link
@@ -122,7 +122,7 @@ export const ContactPage = () => {
                     ) : (
                       ''
                     )
-                )}
+                )} */}
               </div>
             </div>
           </div>

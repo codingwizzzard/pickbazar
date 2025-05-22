@@ -3,7 +3,7 @@ import { siteSettings } from '@/config/site';
 import Link from '@/components/ui/link';
 import Logo from '@/components/ui/logo';
 import SubscriptionWidget from '@/components/settings/subscribe-to-newsletter';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useRouter } from 'next/router';
 import { StripeIcon } from '@/components/icons/payment-gateways/stripe';
 import { PayPalIcon } from '@/components/icons/payment-gateways/paypal';
@@ -39,14 +39,14 @@ export const icon: any = {
 const Footer = () => {
   const { t } = useTranslation('common');
   const { locale } = useRouter();
-  const { settings, isLoading: settingsLoading } = useSettings();
-  const paymentGateway = settings?.paymentGateway,
-    siteTitle = settings?.siteTitle,
-    siteLink = settings?.siteLink,
-    copyrightText = settings?.copyrightText,
-    externalText = settings?.externalText,
-    externalLink = settings?.externalLink,
-    contactDetails = settings?.contactDetails;
+  // const { settings, isLoading: settingsLoading } = useSettings();
+  // const paymentGateway = settings?.paymentGateway,
+  //   siteTitle = settings?.siteTitle,
+  //   siteLink = settings?.siteLink,
+  //   copyrightText = settings?.copyrightText,
+  //   externalText = settings?.externalText,
+  //   externalLink = settings?.externalLink,
+  //   contactDetails = settings?.contactDetails;
 
   const date = new Date();
 
@@ -59,7 +59,7 @@ const Footer = () => {
             <Logo />
           </div>
 
-          {settingsLoading ? (
+          {/* {settingsLoading ? (
             <SVGLoaderIcon className="text-2xl" />
           ) : (
             <>
@@ -94,9 +94,9 @@ const Footer = () => {
                 ''
               )}
             </>
-          )}
+          )} */}
 
-          <div>
+          {/* <div>
             {settingsLoading ? (
               <SVGLoaderIcon className="text-xl" />
             ) : (
@@ -124,7 +124,7 @@ const Footer = () => {
                 )}
               </div>
             )}
-          </div>
+          </div> */}
         </div>
 
         {siteSettings?.footer?.menus?.map((menu, idx) => (
@@ -168,7 +168,7 @@ const Footer = () => {
           </Link>{' '}
           {t('text-rights-reserved')}
         </span> */}
-        {settingsLoading ? (
+        {/* {settingsLoading ? (
           <SVGLoaderIcon className="text-xl" />
         ) : (
           <span className="order-2 text-sm shrink-0 text-heading lg:order-1">
@@ -191,7 +191,7 @@ const Footer = () => {
               ''
             )}
           </span>
-        )}
+        )} */}
 
         {/* {siteSettings.footer.payment_methods && (
           <div className="flex items-center order-1 mb-5 space-x-5 rtl:space-x-reverse lg:order-2 lg:mb-0">
@@ -207,7 +207,7 @@ const Footer = () => {
           </div>
         )} */}
         <div className="flex flex-wrap items-center justify-center order-1 gap-4 mb-5 lg:order-2 lg:mb-0 lg:justify-end lg:gap-x-5 lg:gap-y-3">
-          {settingsLoading ? (
+          {/* {settingsLoading ? (
             <SVGLoaderIcon className="text-xl" />
           ) : !isEmpty(paymentGateway) && settings?.useEnableGateway ? (
             paymentGateway?.map(
@@ -227,7 +227,7 @@ const Footer = () => {
             )
           ) : (
             ''
-          )}
+          )} */}
         </div>
       </div>
     </div>

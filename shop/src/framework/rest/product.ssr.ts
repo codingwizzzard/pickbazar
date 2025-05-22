@@ -36,10 +36,10 @@ export const getStaticProps: GetStaticProps<
 
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
+  // );
 
   try {
     const product = await client.products.get({ slug, language: locale });

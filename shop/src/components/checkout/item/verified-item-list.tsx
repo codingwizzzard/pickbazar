@@ -21,7 +21,7 @@ import { ItemInfoRow } from '@/components/checkout/item/item-info-row';
 import PaymentGrid from '@/components/checkout/payment/payment-grid';
 import { PlaceOrderAction } from '@/components/checkout/place-order-action';
 import Wallet from '@/components/checkout/wallet/wallet';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import cn from 'classnames';
 import { CouponType } from '@/types';
 
@@ -36,32 +36,32 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
   const [discount] = useAtom(discountAtom);
   const [payableAmount] = useAtom(payableAmountAtom);
   const [use_wallet] = useAtom(walletAtom);
-  const { settings } = useSettings();
-  const freeShippingAmount = settings?.freeShippingAmount;
-  const freeShipping = settings?.freeShipping;
+  // const { settings } = useSettings();
+  // const freeShippingAmount = settings?.freeShippingAmount;
+  // const freeShipping = settings?.freeShipping;
 
   const available_items = items?.filter(
     (item) => !verifiedResponse?.unavailable_products?.includes(item.id)
   );
 
-  const { price: tax } = usePrice(
-    verifiedResponse && {
-      amount: verifiedResponse.total_tax ?? 0,
-    }
-  );
+  // const { price: tax } = usePrice(
+  //   verifiedResponse && {
+  //     amount: verifiedResponse.total_tax ?? 0,
+  //   }
+  // );
 
-  const { price: shipping } = usePrice(
-    verifiedResponse && {
-      amount: verifiedResponse.shipping_charge ?? 0,
-    }
-  );
+  // const { price: shipping } = usePrice(
+  //   verifiedResponse && {
+  //     amount: verifiedResponse.shipping_charge ?? 0,
+  //   }
+  // );
   const base_amount = calculateTotal(available_items);
-  const { price: sub_total } = usePrice(
-    verifiedResponse && {
-      amount: base_amount,
-    }
-  );
-  // Calculate Discount base on coupon type
+  // const { price: sub_total } = usePrice(
+  //   verifiedResponse && {
+  //     amount: base_amount,
+  //   }
+  // );
+  // // Calculate Discount base on coupon type
   let calculateDiscount = 0;
 
   switch (coupon?.type) {
@@ -75,28 +75,28 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
       calculateDiscount = Number(discount)
   }
 
-  const { price: discountPrice } = usePrice(
-    //@ts-ignore
-    discount && {
-      amount: Number(calculateDiscount),
-    }
-  );
-  let freeShippings = freeShipping && Number(freeShippingAmount) <= base_amount
-  const totalPrice = verifiedResponse
-    ? calculatePaidTotal(
-      {
-        totalAmount: base_amount,
-        tax: verifiedResponse?.total_tax,
-        shipping_charge: freeShippings ? 0 : verifiedResponse?.shipping_charge,
-      },
-      Number(calculateDiscount)
-    )
-    : 0;
-  const { price: total } = usePrice(
-    verifiedResponse && {
-      amount: totalPrice,
-    }
-  );
+  // const { price: discountPrice } = usePrice(
+  //   //@ts-ignore
+  //   discount && {
+  //     amount: Number(calculateDiscount),
+  //   }
+  // );
+  // let freeShippings = freeShipping && Number(freeShippingAmount) <= base_amount
+  // const totalPrice = verifiedResponse
+  //   ? calculatePaidTotal(
+  //     {
+  //       totalAmount: base_amount,
+  //       tax: verifiedResponse?.total_tax,
+  //       // shipping_charge: freeShippings ? 0 : verifiedResponse?.shipping_charge,
+  //     },
+  //     Number(calculateDiscount)
+  //   )
+  //   : 0;
+  // const { price: total } = usePrice(
+  //   verifiedResponse && {
+  //     amount: totalPrice,
+  //   }
+  // );
   return (
     <div className={className}>
       <div className="flex flex-col pb-2 border-b border-border-200">
@@ -119,11 +119,11 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
       </div>
 
       <div className="mt-4 space-y-2">
-        <ItemInfoRow title={t('text-sub-total')} value={sub_total} />
-        <ItemInfoRow title={t('text-tax')} value={tax} />
+        {/* <ItemInfoRow title={t('text-sub-total')} value={sub_total} /> */}
+        {/* <ItemInfoRow title={t('text-tax')} value={tax} /> */}
         <div className="flex justify-between">
-          <p className="text-sm text-body">{t('text-shipping')} <span className='text-xs font-semibold text-accent'>{freeShippings && `(${t('text-free-shipping')})`}</span></p>
-          <span className="text-sm text-body"> {shipping}</span>
+          {/* <p className="text-sm text-body">{t('text-shipping')} <span className='text-xs font-semibold text-accent'>{freeShippings && `(${t('text-free-shipping')})`}</span></p> */}
+          {/* <span className="text-sm text-body"> {shipping}</span> */}
         </div>
         {discount && coupon ? (
           <div className="flex justify-between">
@@ -147,7 +147,8 @@ const VerifiedItemList: React.FC<Props> = ({ className }) => {
           <p className="text-base font-semibold text-heading">
             {t('text-total')}
           </p>
-          <span className="text-base font-semibold text-heading">{total}</span>
+          {/* <span className="text-base font-semibold text-heading">{total}</span> */}/
+          <span className="text-base font-semibold text-heading">{1000}</span>
         </div>
       </div>
       {verifiedResponse && (

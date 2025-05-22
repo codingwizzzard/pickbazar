@@ -9,10 +9,10 @@ import { API_ENDPOINTS } from './client/api-endpoints';
 
 export const getCustomerStaticProps: GetStaticProps = async ({ locale }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
+  // );
   await queryClient.prefetchInfiniteQuery(
     [API_ENDPOINTS.REFUND_POLICIES, { target: 'customer', status: 'approved', limit: LIMIT, language: locale, }],
     ({ queryKey }) => client.refundPolicies.all(queryKey[1] as RefundPolicyQueryOptions)
@@ -27,10 +27,10 @@ export const getCustomerStaticProps: GetStaticProps = async ({ locale }) => {
 
 export const getVendorStaticProps: GetStaticProps = async ({ locale }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions)
+  // );
   await queryClient.prefetchInfiniteQuery(
     [API_ENDPOINTS.REFUND_POLICIES, { target: 'vendor', status: 'approved', limit: LIMIT, language: locale, }],
     ({ queryKey }) => client.refundPolicies.all(queryKey[1] as RefundPolicyQueryOptions)

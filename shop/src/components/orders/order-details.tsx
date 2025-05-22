@@ -12,7 +12,7 @@ import type { Order } from '@/types';
 import OrderViewHeader from './order-view-header';
 import OrderStatusProgressBox from '@/components/orders/order-status-progress-box';
 import { OrderStatus, PaymentStatus, RefundStatus } from '@/types';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 interface Props {
   order: Order;
@@ -89,7 +89,7 @@ function RefundView({
 
 const OrderDetails = ({ order, loadingStatus }: Props) => {
   const { t } = useTranslation('common');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const {
     id,
     products,
@@ -100,21 +100,21 @@ const OrderDetails = ({ order, loadingStatus }: Props) => {
     refund,
   }: any = order ?? {};
 
-  const { price: amount } = usePrice({
-    amount: order?.amount,
-  });
-  const { price: discount } = usePrice({
-    amount: order?.discount ?? 0,
-  });
-  const { price: total } = usePrice({
-    amount: order?.total,
-  });
-  const { price: delivery_fee } = usePrice({
-    amount: order?.delivery_fee ?? 0,
-  });
-  const { price: sales_tax } = usePrice({
-    amount: order?.sales_tax,
-  });
+  // const { price: amount } = usePrice({
+  //   amount: order?.amount,
+  // });
+  // const { price: discount } = usePrice({
+  //   amount: order?.discount ?? 0,
+  // });
+  // const { price: total } = usePrice({
+  //   amount: order?.total,
+  // });
+  // const { price: delivery_fee } = usePrice({
+  //   amount: order?.delivery_fee ?? 0,
+  // });
+  // const { price: sales_tax } = usePrice({
+  //   amount: order?.sales_tax,
+  // });
   return (
     <div className="flex w-full flex-col border border-border-200 bg-white lg:w-2/3">
       <div className="flex flex-col items-center p-5 md:flex-row md:justify-between">
@@ -176,28 +176,33 @@ const OrderDetails = ({ order, loadingStatus }: Props) => {
         <div className="flex w-full flex-col px-5 py-4 md:w-2/5">
           <div className="mb-3 flex justify-between">
             <span className="text-sm text-body">{t('text-sub-total')}</span>
-            <span className="text-sm text-heading">{amount}</span>
+            {/* <span className="text-sm text-heading">{amount}</span> */}
+            <span className="text-sm text-heading">{111}</span>
           </div>
 
           <div className="mb-3 flex justify-between">
             <span className="text-sm text-body">{t('text-discount')}</span>
-            <span className="text-sm text-heading">{discount}</span>
+            {/* <span className="text-sm text-heading">{discount}</span> */}
+            <span className="text-sm text-heading">{10%}</span>
           </div>
 
           <div className="mb-3 flex justify-between">
             <span className="text-sm text-body">{t('text-delivery-fee')}</span>
-            <span className="text-sm text-heading">{delivery_fee}</span>
+            {/* <span className="text-sm text-heading">{delivery_fee}</span> */}
+            <span className="text-sm text-heading">{120}</span>
           </div>
           <div className="mb-3 flex justify-between">
             <span className="text-sm text-body">{t('text-tax')}</span>
-            <span className="text-sm text-heading">{sales_tax}</span>
+            {/* <span className="text-sm text-heading">{sales_tax}</span> */}
+            <span className="text-sm text-heading">{5%}</span>
           </div>
 
           <div className="flex justify-between">
             <span className="text-sm font-bold text-heading">
               {t('text-total')}
             </span>
-            <span className="text-sm font-bold text-heading">{total}</span>
+            {/* <span className="text-sm font-bold text-heading">{total}</span> */}
+            <span className="text-sm text-heading">{220}</span>
           </div>
         </div>
       </div>
@@ -211,7 +216,7 @@ const OrderDetails = ({ order, loadingStatus }: Props) => {
           />
         </div>
         <OrderItems
-          settings={settings}
+          // settings={settings}
           products={products}
           orderId={id}
           orderStatus={order?.order_status}

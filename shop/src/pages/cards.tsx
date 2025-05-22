@@ -2,7 +2,7 @@ import Seo from '@/components/seo/seo';
 import DashboardLayout from '@/layouts/_dashboard';
 import MyCards from '@/components/card/my-cards';
 import Card from '@/components/ui/cards/card';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { PaymentGateway } from '@/types';
 import { isStripeAvailable } from '@/lib/is-stripe-available';
 import { FeatureNotAvailable } from '@/components/common/feature-not-available';
@@ -10,11 +10,11 @@ import { FeatureNotAvailable } from '@/components/common/feature-not-available';
 export { getStaticProps } from '@/framework/general.ssr';
 
 const MyCardsPage = () => {
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   // validation check from front-end
-  const isStripeGatewayAvailable = isStripeAvailable(settings);
-  if (!isStripeGatewayAvailable) {
+  // const isStripeGatewayAvailable = isStripeAvailable(settings);
+  // if (!isStripeGatewayAvailable) {
     return (
       <Card className="w-full shadow-none sm:shadow flex flex-col">
         <div className="m-auto">
@@ -22,7 +22,7 @@ const MyCardsPage = () => {
         </div>
       </Card>
     );
-  }
+  // }
 
   return (
     <>

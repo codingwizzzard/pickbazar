@@ -15,11 +15,11 @@ import { API_ENDPOINTS } from './client/api-endpoints';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'next-i18next';
 import { useUser } from '@/framework/user';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
   const { isAuthorized } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const formattedOptions = {
     ...options,
   };
@@ -36,7 +36,7 @@ export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
     ({ queryKey, pageParam }) =>
       client.notifyLogs.all(Object.assign({}, queryKey[1], pageParam)),
     {
-      enabled: isAuthorized && Boolean(settings?.enableEmailForDigitalProduct),
+      // enabled: isAuthorized && Boolean(settings?.enableEmailForDigitalProduct),
       retry: false,
       getNextPageParam: ({ current_page, last_page }) =>
         last_page > current_page && { page: current_page + 1 },
@@ -64,12 +64,12 @@ export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
 
 export function useNotifyLog({ id }: { id: string }) {
   const { isAuthorized } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const { data, isLoading, error } = useQuery<NotifyLogs, Error>(
     [API_ENDPOINTS.NOTIFY_LOGS, id],
     () => client?.notifyLogs?.get({ id }),
     {
-      enabled: isAuthorized && Boolean(settings?.enableEmailForDigitalProduct),
+      // enabled: isAuthorized && Boolean(settings?.enableEmailForDigitalProduct),
       retry: false,
     },
   );

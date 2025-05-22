@@ -51,10 +51,10 @@ const ShortDetails: React.FC<ShortDetailsProps> = ({ product, isSticky }) => {
     closeModal();
   };
 
-  const { price, basePrice, discount } = usePrice({
-    amount: product?.sale_price ? product?.sale_price : product?.price!,
-    baseAmount: product?.price!,
-  });
+  // const { price, basePrice, discount } = usePrice({
+  //   amount: product?.sale_price ? product?.sale_price : product?.price!,
+  //   baseAmount: product?.price!,
+  // });
 
   const variations = useMemo(
     () =>
@@ -143,13 +143,15 @@ const ShortDetails: React.FC<ShortDetailsProps> = ({ product, isSticky }) => {
           {!hasVariations && (
             <span className="flex items-center ltr:mr-8 rtl:ml-8 ">
               <ins className="text-xl font-semibold text-accent no-underline lg:text-2xl">
-                {price}
+                {/* {price} */}
+                {100}
               </ins>
-              {basePrice && (
+              {/* {basePrice && ( */}
                 <del className="text-sm font-normal text-muted ltr:ml-2 rtl:mr-2 lg:text-base">
-                  {basePrice}
+                  {/* {basePrice} */}
+                  {400}
                 </del>
-              )}
+              {/* )} */}
             </span>
           )}
 

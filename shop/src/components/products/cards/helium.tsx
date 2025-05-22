@@ -36,16 +36,16 @@ const Helium: React.FC<HeliumProps> = ({ product, className }) => {
     in_flash_sale,
   } = product ?? {};
 
-  const { price, basePrice, discount } = usePrice({
-    amount: product.sale_price ? product.sale_price : product.price!,
-    baseAmount: product.price,
-  });
-  const { price: minPrice } = usePrice({
-    amount: min_price,
-  });
-  const { price: maxPrice } = usePrice({
-    amount: max_price,
-  });
+  // const { price, basePrice, discount } = usePrice({
+  //   amount: product.sale_price ? product.sale_price : product.price!,
+  //   baseAmount: product.price,
+  // });
+  // const { price: minPrice } = usePrice({
+  //   amount: min_price,
+  // });
+  // const { price: maxPrice } = usePrice({
+  //   amount: max_price,
+  // });
 
   const { openModal } = useModalAction();
 
@@ -82,11 +82,11 @@ const Helium: React.FC<HeliumProps> = ({ product, className }) => {
           sizes="(max-width: 768px) 100vw"
           className="block object-contain product-image"
         />
-        {discount && (
+        {/* {discount && (
           <div className="absolute top-3 rounded-full bg-yellow-500 px-1.5 text-xs font-semibold leading-6 text-light ltr:right-3 rtl:left-3 sm:px-2 md:top-4 md:px-2.5 ltr:md:right-4 rtl:md:left-4">
             {discount}
           </div>
-        )}
+        )} */}
       </div>
       {/* End of product image */}
 
@@ -106,11 +106,11 @@ const Helium: React.FC<HeliumProps> = ({ product, className }) => {
             <>
               <div>
                 <span className="text-sm font-semibold text-accent md:text-[15px]">
-                  {minPrice}
+                  {/* {minPrice} */}
                 </span>
                 <span> - </span>
                 <span className="text-sm font-semibold text-accent md:text-[15px]">
-                  {maxPrice}
+                  {/* {maxPrice} */}
                 </span>
               </div>
 
@@ -127,13 +127,15 @@ const Helium: React.FC<HeliumProps> = ({ product, className }) => {
           ) : (
             <>
               <div className="relative">
-                {basePrice && (
+                {/* {basePrice && ( */}
                   <del className="absolute text-xs italic text-opacity-75 -top-4 text-muted md:-top-5">
-                    {basePrice}
+                    {/* {basePrice} */}
+                    {600}
                   </del>
-                )}
+                {/* )} */}
                 <span className="text-sm font-semibold text-accent md:text-base">
-                  {price}
+                  {/* {price} */}
+                  {400}
                 </span>
               </div>
 

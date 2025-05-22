@@ -6,7 +6,7 @@ import CashOnDelivery from '@/components/checkout/payment/cash-on-delivery';
 import { useAtom } from 'jotai';
 import { paymentGatewayAtom } from '@/store/checkout';
 import cn from 'classnames';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { PaymentGateway } from '@/types';
 import PaymentOnline from '@/components/checkout/payment/payment-online';
 import Image from 'next/image';
@@ -84,25 +84,25 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [gateway, setGateway] = useAtom(paymentGatewayAtom);
   const { t } = useTranslation('common');
-  const { settings, isLoading } = useSettings();
+  // const { settings, isLoading } = useSettings();
   // If no payment gateway is set and cash on delivery also disable then cash on delivery will be on by default
-  const isEnableCashOnDelivery =
-    (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
-    settings?.useCashOnDelivery;
+  // const isEnableCashOnDelivery =
+  //   (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
+  //   settings?.useCashOnDelivery;
 
   // default payment gateway
   // const defaultPaymentGateway = settings?.defaultPaymentGateway.toUpperCase();
 
-  const [defaultGateway, setDefaultGateway] = useState(
-    settings?.defaultPaymentGateway?.toUpperCase() || ''
-  );
-  const [cashOnDelivery, setCashOnDelivery] = useState(
-    (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
-      settings?.useCashOnDelivery
-  );
-  const [availableGateway, setAvailableGateway] = useState(
-    settings?.paymentGateway || []
-  );
+  // const [defaultGateway, setDefaultGateway] = useState(
+  //   settings?.defaultPaymentGateway?.toUpperCase() || ''
+  // );
+  // const [cashOnDelivery, setCashOnDelivery] = useState(
+  //   (!settings?.useCashOnDelivery && !settings?.paymentGateway) ||
+  //     settings?.useCashOnDelivery
+  // );
+  // const [availableGateway, setAvailableGateway] = useState(
+  //   settings?.paymentGateway || []
+  // );
 
   // FixME
   // @ts-ignore
@@ -216,15 +216,15 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
   //   }
   // }, [isLoading, cashOnDelivery, defaultGateway, availableGateway]);
 
-  useEffect(() => {
-    if (settings && availableGateway) {
-      setGateway(
-        settings?.defaultPaymentGateway?.toUpperCase() as PaymentGateway
-      );
-    } else {
-      setGateway(PaymentGateway.COD);
-    }
-  }, [isLoading, cashOnDelivery, defaultGateway, availableGateway]);
+  // useEffect(() => {
+  //   if (settings && availableGateway) {
+  //     setGateway(
+  //       settings?.defaultPaymentGateway?.toUpperCase() as PaymentGateway
+  //     );
+  //   } else {
+  //     setGateway(PaymentGateway.COD);
+  //   }
+  // }, [isLoading, cashOnDelivery, defaultGateway, availableGateway]);
 
   const PaymentMethod = AVAILABLE_PAYMENT_METHODS_MAP[gateway];
   const Component = PaymentMethod?.component ?? CashOnDelivery;
@@ -236,9 +236,9 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
       break;
   }
 
-  if (isLoading) {
-    return <Spinner showText={false} />;
-  }
+  // if (isLoading) {
+  //   return <Spinner showText={false} />;
+  // }
   return (
     <div className={className}>
       {errorMessage ? (
@@ -268,11 +268,11 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
             />
           )} */}
 
-          {settings?.useEnableGateway &&
+          {/* {settings?.useEnableGateway &&
             availableGateway &&
             availableGateway?.map((gateway: any, index: any) => {
-              return (
-                <Fragment key={index}>
+              return ( */}
+                {/* <Fragment key={index}>
                   <PaymentGroupOption
                     theme={theme}
                     payment={
@@ -281,16 +281,16 @@ const PaymentGrid: React.FC<{ className?: string; theme?: 'bw' }> = ({
                       ]
                     }
                   />
-                </Fragment>
-              );
-            })}
+                </Fragment> */}
+              {/* );
+            })} */}
 
-          {cashOnDelivery && (
+          {/* {cashOnDelivery && ( */}
             <PaymentGroupOption
               theme={theme}
               payment={AVAILABLE_PAYMENT_METHODS_MAP[PaymentGateway.COD]}
             />
-          )}
+          {/* )} */}
         </div>
       </RadioGroup>
 

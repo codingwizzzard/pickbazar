@@ -15,7 +15,7 @@ import type { LoginUserInput } from '@/types';
 import { AnonymousIcon } from '@/components/icons/anonymous-icon';
 import { useRouter } from 'next/router';
 import { Routes } from '@/config/routes';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 const loginFormSchema = yup.object().shape({
   email: yup
@@ -28,11 +28,11 @@ function LoginForm() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { openModal } = useModalAction();
-  const { settings, isLoading: settingLoading } = useSettings();
+  // const { settings, isLoading: settingLoading } = useSettings();
   const isCheckout = router.pathname.includes('checkout');
   const { mutate: login, isLoading, serverError, setServerError } = useLogin();
 
-  const guestCheckout = settings?.guestCheckout;
+  // const guestCheckout = settings?.guestCheckout;
 
   function onSubmit({ email, password }: LoginUserInput) {
     login({

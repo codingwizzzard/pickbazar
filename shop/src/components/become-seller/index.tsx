@@ -16,7 +16,7 @@ import { cn } from '@/lib/cn';
 import DashboardShowcase from './templates/dashboard-showcase/dashboard-showcase';
 import SellerOpportunity from './templates/seller-opportunity/seller-opportunity';
 import CustomerStories from './templates/user-story/customer-stories';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 interface BecomeSellerProps {
   data: BecomeSellerData & {
@@ -36,7 +36,7 @@ export const NotFoundAlert = ({
 };
 
 const BecomeSeller = ({ data }: BecomeSellerProps) => {
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const page_options = data?.page_options?.page_options;
   const commissions = data?.commissions;
 
@@ -81,7 +81,7 @@ const BecomeSeller = ({ data }: BecomeSellerProps) => {
         <FeeAndCommission
           commissionTitle={page_options?.commissionTitle}
           commissionDescription={page_options?.commissionDescription}
-          isMultiCommissionRate={settings?.isMultiCommissionRate as boolean}
+          // isMultiCommissionRate={settings?.isMultiCommissionRate as boolean}
           commissions={commissions}
           defaultCommissionDetails={page_options?.defaultCommissionDetails}
           defaultCommissionRate={page_options?.defaultCommissionRate}

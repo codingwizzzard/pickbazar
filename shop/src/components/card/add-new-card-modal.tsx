@@ -1,7 +1,7 @@
 import StripeCardForm from '@/components/card/stripe/stripe-card-form';
 import { useModalState } from '@/components/ui/modal/modal.context';
 import { PaymentGateway as PG } from '@/types';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { isStripeAvailable } from '@/lib/is-stripe-available';
 
 const StripeNotAvailable = () => {
@@ -30,23 +30,23 @@ const AddNewCardModal = () => {
     data: { paymentGateway },
   } = useModalState();
 
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   // At first it will check if default payment gateway is stripe or not? if yes then it will directly work on if condition. No need to run else condition.
   
-  const isStripeGatewayAvailable = isStripeAvailable(settings);
+  // const isStripeGatewayAvailable = isStripeAvailable(settings);
 
   let gatewayName: string = 'non-stripe';
-  if (isStripeGatewayAvailable) {
-    gatewayName = PG.STRIPE;
-  }
+  // if (isStripeGatewayAvailable) {
+  //   gatewayName = PG.STRIPE;
+  // }
 
-  const PaymentMethod = isStripeGatewayAvailable
-    ? CARDS_FORM_COMPONENTS[gatewayName]
-    : CARDS_FORM_COMPONENTS['STRIPE_NA'];
-  const CardFormComponent = PaymentMethod?.component;
+  // const PaymentMethod = isStripeGatewayAvailable
+  //   ? CARDS_FORM_COMPONENTS[gatewayName]
+  //   : CARDS_FORM_COMPONENTS['STRIPE_NA'];
+  // const CardFormComponent = PaymentMethod?.component;
 
-  return <CardFormComponent />;
+  // return <CardFormComponent />;
 };
 
 export default AddNewCardModal;

@@ -10,7 +10,7 @@ import { NotifyLogs } from '@/types';
 import { isEmpty } from 'lodash';
 import Button from '@/components/ui/button';
 import { useTranslation } from 'next-i18next';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { FeatureNotAvailable } from '@/components/common/feature-not-available';
 export { getStaticProps } from '@/framework/notify-logs.ssr';
 
@@ -18,17 +18,17 @@ export default function NotifyLogsPage() {
   const limit: number = 6;
   const data = useNotification();
   const { t } = useTranslation();
-  const { settings } = useSettings();
+  // const { settings } = useSettings(); 
 
-  if (!Boolean(settings?.enableEmailForDigitalProduct)) {
-    return (
-      <Card className="w-full shadow-none sm:shadow flex flex-col">
-        <div className="m-auto">
-          <FeatureNotAvailable />
-        </div>
-      </Card>
-    );
-  }
+  // if (!Boolean(settings?.enableEmailForDigitalProduct)) {
+  //   return (
+  //     <Card className="w-full shadow-none sm:shadow flex flex-col">
+  //       <div className="m-auto">
+  //         <FeatureNotAvailable />
+  //       </div>
+  //     </Card>
+  //   );
+  // }
 
   if (data?.error) return <ErrorMessage message={data?.error?.message} />;
 

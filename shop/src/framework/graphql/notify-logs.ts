@@ -10,11 +10,11 @@ import { useTranslation } from 'next-i18next';
 import { toast } from 'react-toastify';
 import { UpdateNotifyLogInput } from '__generated__/__types__';
 import { useUser } from '@/framework/user';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
   const { isAuthorized } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const {
     data,
     loading: isLoading,
@@ -23,7 +23,7 @@ export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
     networkStatus,
   } = useNotifyLogsQuery({
     variables: { ...options, first: options?.limit },
-    skip: !isAuthorized && !Boolean(settings?.enableEmailForDigitalProduct),
+    // skip: !isAuthorized && !Boolean(settings?.enableEmailForDigitalProduct),
     notifyOnNetworkStatusChange: true,
   });
 
@@ -51,13 +51,13 @@ export function useNotifyLogs(options?: Partial<NotifyLogsQueryOptions>) {
 
 export function useNotifyLog({ id }: { id: string }) {
   const { isAuthorized } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const {
     data,
     loading: isLoading,
     error,
   } = useNotifyLogQuery({
-    skip: !isAuthorized && !Boolean(settings?.enableEmailForDigitalProduct),
+    // skip: !isAuthorized && !Boolean(settings?.enableEmailForDigitalProduct),
     variables: {
       id,
     },

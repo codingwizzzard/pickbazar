@@ -9,11 +9,11 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const queryClient = new QueryClient();
 
   try {
-    const settingsData = await queryClient.fetchQuery(
-      [API_ENDPOINTS.SETTINGS, { language: locale }],
-      ({ queryKey }) =>
-        client.settings.all(queryKey[1] as SettingsQueryOptions),
-    );
+    // const settingsData = await queryClient.fetchQuery(
+    //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+    //   ({ queryKey }) =>
+    //     client.settings.all(queryKey[1] as SettingsQueryOptions),
+    // );
 
     const data = await queryClient.fetchQuery(
       [API_ENDPOINTS.BECAME_SELLER, { language: locale }],
@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
             ...data.page_options,
             page_options: {
               ...data.page_options.page_options,
-              isMultiCommissionRate: settingsData.options.isMultiCommissionRate,
+              // isMultiCommissionRate: settingsData.options.isMultiCommissionRate,
             },
           },
         },

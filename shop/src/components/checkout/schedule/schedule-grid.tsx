@@ -4,7 +4,7 @@ import ScheduleCard from './schedule-card';
 import { deliveryTimeAtom } from '@/store/checkout';
 import { useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { isArray, isEmpty } from 'lodash';
 
 interface ScheduleProps {
@@ -19,16 +19,16 @@ export const ScheduleGrid: React.FC<ScheduleProps> = ({
   count,
 }) => {
   const { t } = useTranslation('common');
-  const {
-    settings: { deliveryTime: schedules },
-  }: any = useSettings();
+  // const {
+  //   settings: { deliveryTime: schedules },
+  // }: any = useSettings();
 
   const [selectedSchedule, setSchedule] = useAtom(deliveryTimeAtom);
-  useEffect(() => {
-    if (!isEmpty(schedules) && isArray(schedules)) {
-      setSchedule(schedules[0]);
-    }
-  }, [schedules]);
+  // useEffect(() => {
+  //   if (!isEmpty(schedules) && isArray(schedules)) {
+  //     setSchedule(schedules[0]);
+  //   }
+  // }, [schedules]);
   return (
     <div className={className}>
       <div className="mb-5 flex items-center justify-between md:mb-8">
@@ -42,7 +42,7 @@ export const ScheduleGrid: React.FC<ScheduleProps> = ({
         </div>
       </div>
 
-      {schedules && schedules?.length ? (
+      {/* {schedules && schedules?.length ? (
         <RadioGroup value={selectedSchedule} onChange={setSchedule}>
           <RadioGroup.Label className="sr-only">{label}</RadioGroup.Label>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
@@ -61,7 +61,7 @@ export const ScheduleGrid: React.FC<ScheduleProps> = ({
             {t('text-no-delivery-time-found')}
           </span>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

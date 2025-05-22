@@ -41,7 +41,7 @@ export const API_ENDPOINTS = {
   VERIFY_OTP_CODE: '/verify-otp-code',
   OTP_LOGIN: '/otp-login',
   UPDATE_CONTACT: '/update-contact',
-  SETTINGS: '/settings',
+  // SETTINGS: '/settings',
   UPLOADS: '/attachments',
   MY_QUESTIONS: '/my-questions',
   MY_REPORTS: '/my-reports',

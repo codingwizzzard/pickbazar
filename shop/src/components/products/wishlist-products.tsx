@@ -33,16 +33,16 @@ function WishlistItem({ product }: { product: Product }) {
   //     ? `${product?.language}/${product?.slug}`
   //     : product.slug;
 
-  const { price, basePrice } = usePrice({
-    amount: product?.sale_price ? product?.sale_price : product?.price,
-    baseAmount: product?.price,
-  });
-  const { price: minPrice } = usePrice({
-    amount: product?.min_price,
-  });
-  const { price: maxPrice } = usePrice({
-    amount: product?.max_price,
-  });
+  // const { price, basePrice } = usePrice({
+  //   amount: product?.sale_price ? product?.sale_price : product?.price,
+  //   baseAmount: product?.price,
+  // });
+  // const { price: minPrice } = usePrice({
+  //   amount: product?.min_price,
+  // });
+  // const { price: maxPrice } = usePrice({
+  //   amount: product?.max_price,
+  // });
 
   const { openModal } = useModalAction();
 
@@ -85,23 +85,26 @@ function WishlistItem({ product }: { product: Product }) {
           {product?.product_type.toLowerCase() === 'variable' ? (
             <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
               <span className="text-xl font-semibold text-heading">
-                {minPrice}
+                {/* {minPrice} */}
+                {550}
               </span>
               <span> - </span>
               <span className="text-xl font-semibold text-heading">
-                {maxPrice}
+                {/* {maxPrice} */}
+                {600}
               </span>
             </div>
           ) : (
             <span className="flex min-w-150 items-center sm:justify-end">
               <ins className="text-xl font-semibold text-heading no-underline">
-                {price}
+                {/* {price} */}
               </ins>
-              {basePrice && (
+              {/* {basePrice && ( */}
                 <del className="text-base font-normal text-muted ltr:ml-3 rtl:mr-3">
-                  {basePrice}
+                  {/* {basePrice} */}
+                  {300}
                 </del>
-              )}
+              {/* )} */}
             </span>
           )}
 

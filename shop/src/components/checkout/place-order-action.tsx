@@ -16,7 +16,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useLogout, useUser } from '@/framework/user';
 import { PaymentGateway } from '@/types';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import Cookies from 'js-cookie';
 import { REVIEW_POPUP_MODAL_KEY } from '@/lib/constants';
 
@@ -59,10 +59,10 @@ export const PlaceOrderAction: React.FC<{
   );
 
   const subtotal = calculateTotal(available_items);
-  const { settings } = useSettings();
-  const freeShippingAmount = settings?.freeShippingAmount;
-  const freeShipping = settings?.freeShipping;
-  let freeShippings = freeShipping && Number(freeShippingAmount) <= subtotal;
+  // const { settings } = useSettings();
+  // const freeShippingAmount = settings?.freeShippingAmount;
+  // const freeShipping = settings?.freeShipping;
+  // let freeShippings = freeShipping && Number(freeShippingAmount) <= subtotal;
   const total = calculatePaidTotal(
     {
       totalAmount: subtotal,
@@ -95,7 +95,7 @@ export const PlaceOrderAction: React.FC<{
       discount: discount ?? 0,
       paid_total: total,
       sales_tax: verified_response?.total_tax,
-      delivery_fee: freeShippings ? 0 : verified_response?.shipping_charge,
+      // delivery_fee: freeShippings ? 0 : verified_response?.shipping_charge,
       total,
       delivery_time: delivery_time?.title,
       customer_contact,

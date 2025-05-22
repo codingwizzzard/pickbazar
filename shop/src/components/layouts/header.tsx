@@ -10,7 +10,7 @@ import CountdownTimer from '@/components/ui/countdown-timer';
 import LanguageSwitcher from '@/components/ui/language-switcher';
 import Logo from '@/components/ui/logo';
 import { Routes } from '@/config/routes';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useHeaderSearch } from '@/layouts/headers/header-search-atom';
 import {
   RESPONSIVE_WIDTH,
@@ -80,7 +80,7 @@ const Header = ({ layout }: { layout?: string }) => {
     return setDrawerView({ display: true, view });
   }, []);
   const closeLocation = () => setOpenDropdown(false);
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const [underMaintenanceIsComing] = useAtom(checkIsMaintenanceModeComing);
   const [shopUnderMaintenanceIsComing] = useAtom(
     checkIsShopMaintenanceModeComing,
@@ -117,7 +117,7 @@ const Header = ({ layout }: { layout?: string }) => {
             childClassName="flex justify-center font-bold items-center w-full gap-4"
           >
             <CountdownTimer
-              date={new Date(settings?.maintenance?.start as string)}
+              // date={new Date(settings?.maintenance?.start as string)}
               className="text-blue-600 [&>p]:bg-blue-200 [&>p]:p-2 [&>p]:text-xs [&>p]:text-blue-600"
               onComplete={() => setUnderMaintenanceStart(true)}
             />
@@ -251,7 +251,7 @@ const Header = ({ layout }: { layout?: string }) => {
                     <SearchIcon className="h-4 w-4" />
                   </Button>
                 ) : null}
-                {settings?.useGoogleMap && (
+                {/* {settings?.useGoogleMap && ( */}
                   <div
                     className={cn(
                       'relative flex justify-center lg:w-auto lg:border-none',
@@ -280,11 +280,11 @@ const Header = ({ layout }: { layout?: string }) => {
                       closeLocation={closeLocation}
                     />
                   </div>
-                )}
+                {/* )} */}
 
                 <HeaderNotification
                   isAuthorize={isAuthorize}
-                  isEnable={Boolean(settings?.enableEmailForDigitalProduct)}
+                  // isEnable={Boolean(settings?.enableEmailForDigitalProduct)}
                 />
 
                 {isMultiLangEnable ? (

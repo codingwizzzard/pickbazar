@@ -13,7 +13,7 @@ import PageBanner from '@/components/banners/page-banner';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 import { useShop } from '@/framework/shop';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { Routes } from '@/config/routes';
 const CartCounterButton = dynamic(
   () => import('@/components/cart/cart-counter-button'),
@@ -27,10 +27,10 @@ export default function ShopOffersPage() {
     query: { slug },
   } = useRouter();
   const { data: shopData } = useShop({ slug: slug as string });
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const shopId = shopData?.id!;
 
-  !settings?.enableCoupons ? router.replace(Routes.shops) : null;
+  // !settings?.enableCoupons ? router.replace(Routes.shops) : null;
 
   const { isLoading, isLoadingMore, hasMore, coupons, error, loadMore } =
     useCoupons({

@@ -8,7 +8,7 @@ import { isArray, isEmpty } from 'lodash';
 import Fluorine from '@/components/products/cards/fluorine';
 import CountdownTimer from '@/components/ui/countdown-timer';
 import NotFound from '@/components/ui/not-found';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useSanitizeContent } from '@/lib/sanitize-content';
 
 type DetailsViewProps = {
@@ -24,8 +24,8 @@ const DetailsView: React.FC<DetailsViewProps> = ({
 }) => {
   const { t } = useTranslation();
   const containerClass = 'px-4 md:px-8 lg:px-16 2xl:px-52';
-  const { settings } = useSettings();
-  const currency = settings?.currency;
+  // const { settings } = useSettings();
+  // const currency = settings?.currency;
   const content = useSanitizeContent({ description: flashSale?.description });
   return (
     <div className={twMerge(classNames('bg-white', className))}>
@@ -111,7 +111,7 @@ const DetailsView: React.FC<DetailsViewProps> = ({
             <li>
               <span>Deals rate : </span>
               <p>
-                {flashSale?.type === 'fixed_rate' && currency + ' '}
+                {/* {flashSale?.type === 'fixed_rate' && currency + ' '} */}
                 {flashSale?.rate}
                 {flashSale?.type === 'percentage' ? '% Off.' : ' Off.'}
               </p>

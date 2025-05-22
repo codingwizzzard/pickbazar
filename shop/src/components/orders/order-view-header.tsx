@@ -6,7 +6,7 @@ import PayNowButton from '@/components/payment/pay-now-button';
 import { isPaymentPending } from '@/lib/is-payment-pending';
 import { SpinnerLoader } from '@/components/ui/loaders/spinner/spinner';
 import ChangeGateway from '@/components/payment/gateway-control/change-gateway';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { isEmpty } from 'lodash';
 import { useEffect, useState } from 'react';
 import { useModalState } from '@/components/ui/modal/modal.context';
@@ -25,7 +25,7 @@ export default function OrderViewHeader({
   buttonSize = 'medium',
   loading = false,
 }: OrderViewHeaderProps) {
-  const { settings, isLoading } = useSettings();
+  // const { settings, isLoading } = useSettings();
   const { t } = useTranslation('common');
   const isPaymentActionPending = isPaymentPending(
     //@ts-ignore
@@ -33,7 +33,7 @@ export default function OrderViewHeader({
     order?.order_status,
     order?.payment_status,
   );
-  const paymentGateway = settings?.paymentGateway;
+  // const paymentGateway = settings?.paymentGateway;
   return (
     <div className={cn(`bg-[#F7F8FA] ${wrapperClassName}`)}>
       <div className="flex flex-col flex-wrap items-center justify-between mb-0 text-base font-bold gap-x-8 text-heading sm:flex-row lg:flex-nowrap">
@@ -101,7 +101,7 @@ export default function OrderViewHeader({
             ''
           )}
         </div>
-        {!isLoading && !isEmpty(paymentGateway) ? (
+        {/* {!isLoading && !isEmpty(paymentGateway) ? ( */}
           <>
             {isPaymentActionPending && (
               <span className="order-2 w-full max-w-full mt-5 shrink-0 basis-full sm:order-1 lg:mt-0 lg:w-auto lg:max-w-none lg:basis-auto lg:ltr:ml-auto lg:rtl:mr-auto">
@@ -119,9 +119,9 @@ export default function OrderViewHeader({
               </span>
             )}
           </>
-        ) : (
-          ''
-        )}
+        {/* ) : ( */}
+          {/* ''
+        )} */}
       </div>
     </div>
   );

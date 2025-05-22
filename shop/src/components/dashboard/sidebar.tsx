@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { useLogout, useUser } from '@/framework/user';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { PaymentGateway } from '@/types';
 import { Routes } from '@/config/routes';
 import { isStripeAvailable } from '@/lib/is-stripe-available';
@@ -16,7 +16,7 @@ type DashboardSidebarProps = {
 const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ className }) => {
   const { mutate: logout } = useLogout();
   const { me } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const { t } = useTranslation();
   const { pathname } = useRouter();
 
@@ -45,7 +45,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ className }) => {
 
       <div className="overflow-hidden rounded border border-border-200 bg-light">
         <ul className="py-7">
-          {siteSettings.dashboardSidebarMenu
+          {/* {siteSettings.dashboardSidebarMenu
             ?.slice(0, -1)
             .map((item: any, idx) => {
               const enableMyCardRoute = isStripeAvailable(settings);
@@ -74,7 +74,7 @@ const DashboardSidebar: React.FC<DashboardSidebarProps> = ({ className }) => {
                   </Link>
                 </li>
               );
-            })}
+            })} */}
         </ul>
         {/* End of top part menu */}
 

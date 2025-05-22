@@ -15,7 +15,7 @@ import { GetServerSideProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { FeatureNotAvailable } from '@/components/common/feature-not-available';
 
 dayjs.extend(relativeTime);
@@ -25,20 +25,20 @@ dayjs.extend(timezone);
 const NotifyLogPage = () => {
   const { t } = useTranslation('common');
   const { query } = useRouter();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const { notification, isLoading } = useNotifyLog({
     id: query?.id as string,
   });
 
-  if (!Boolean(settings?.enableEmailForDigitalProduct)) {
-    return (
-      <Card className="w-full shadow-none sm:shadow flex flex-col">
-        <div className="m-auto">
-          <FeatureNotAvailable />
-        </div>
-      </Card>
-    );
-  }
+  // if (!Boolean(settings?.enableEmailForDigitalProduct)) {
+  //   return (
+  //     <Card className="w-full shadow-none sm:shadow flex flex-col">
+  //       <div className="m-auto">
+  //         <FeatureNotAvailable />
+  //       </div>
+  //     </Card>
+  //   );
+  // }
 
   return (
     <Card className="w-full shadow-none sm:shadow flex flex-col">

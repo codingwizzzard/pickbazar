@@ -8,7 +8,7 @@ import VerifyEmail from '@/pages/verify-email';
 import dynamic from 'next/dynamic';
 import { useHasMounted } from '@/lib/use-has-mounted';
 import axios from 'axios';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { Routes } from '@/config/routes';
 import NotFound from '@/components/404/404';
 const Loader = dynamic(
@@ -22,7 +22,7 @@ const PrivateRoute: React.FC<{ children?: React.ReactNode }> = ({
   const { getEmailVerified, setEmailVerified } = useToken();
   const router = useRouter();
   const { me, isAuthorized, error } = useUser();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const hasMounted = useHasMounted();
   const isUser = !!me;
 
@@ -30,8 +30,8 @@ const PrivateRoute: React.FC<{ children?: React.ReactNode }> = ({
     if (error?.response?.status === 417) {
       return (
         <NotFound
-          title={`${settings?.siteTitle} ${process.env.NEXT_PUBLIC_VERSION}`}
-          subTitle={`This copy of ${settings?.siteTitle} is not genuine.`}
+          // title={`${settings?.siteTitle} ${process.env.NEXT_PUBLIC_VERSION}`}
+          // subTitle={`This copy of ${settings?.siteTitle} is not genuine.`}
           linkTitle="Please contact with site admin."
           link={Routes.contactUs}
         />

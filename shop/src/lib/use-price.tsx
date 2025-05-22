@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useRouter } from 'next/router';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 
 export function formatPrice({
   amount,
@@ -56,45 +56,45 @@ export default function usePrice(
     currencyCode?: string;
   } | null
 ) {
-  const { settings } = useSettings();
-  const currency = settings?.currency;
-  const currencyOptions = settings?.currencyOptions;
-  const { amount, baseAmount, currencyCode, currencyOptionsFormat } = {
-    ...data,
-    currencyCode: currency ?? 'USD',
-    currencyOptionsFormat: currencyOptions ?? {
-      formation: 'en-US',
-      fractions: 2
-    }
-  };
-  const { formation = 'en-US', fractions = 2 } = currencyOptionsFormat!;
+  // const { settings } = useSettings();
+  // const currency = settings?.currency;
+  // const currencyOptions = settings?.currencyOptions;
+  // const { amount, baseAmount, currencyCode, currencyOptionsFormat } = {
+  //   ...data,
+  //   currencyCode: currency ?? 'USD',
+  //   currencyOptionsFormat: currencyOptions ?? {
+  //     formation: 'en-US',
+  //     fractions: 2
+  //   }
+  // };
+  // const { formation = 'en-US', fractions = 2 } = currencyOptionsFormat!;
 
   const { locale } = useRouter();
-  const value = useMemo(() => {
-    if (typeof amount !== 'number' || !currencyCode) return '';
-    const fractionalDigit = fractions ? fractions : 2;
-    let currentLocale = formation ? formation : 'en';
-    // if (process.env.NEXT_PUBLIC_ENABLE_MULTI_LANG) {
-    //   currentLocale = locale ? locale : 'en';
-    // }
+  // const value = useMemo(() => {
+  //   if (typeof amount !== 'number' || !currencyCode) return '';
+  //   const fractionalDigit = fractions ? fractions : 2;
+  //   let currentLocale = formation ? formation : 'en';
+  //   // if (process.env.NEXT_PUBLIC_ENABLE_MULTI_LANG) {
+  //   //   currentLocale = locale ? locale : 'en';
+  //   // }
 
-    return baseAmount
-      ? formatVariantPrice({
-        amount,
-        baseAmount,
-        currencyCode,
-        locale: currentLocale,
-        fractions: fractionalDigit,
-      })
-      : formatPrice({
-        amount,
-        currencyCode,
-        locale: currentLocale,
-        fractions: fractionalDigit,
-      });
-  }, [amount, baseAmount, currencyCode, locale]);
+  //   return baseAmount
+  //     ? formatVariantPrice({
+  //       amount,
+  //       baseAmount,
+  //       currencyCode,
+  //       locale: currentLocale,
+  //       fractions: fractionalDigit,
+  //     })
+  //     : formatPrice({
+  //       amount,
+  //       currencyCode,
+  //       locale: currentLocale,
+  //       fractions: fractionalDigit,
+  //     });
+  // }, [amount, baseAmount, currencyCode, locale]);
 
-  return typeof value === 'string'
-    ? { price: value, basePrice: null, discount: null }
-    : value;
+  // return typeof value === 'string'
+  //   ? { price: value, basePrice: null, discount: null }
+  //   : value;
 }

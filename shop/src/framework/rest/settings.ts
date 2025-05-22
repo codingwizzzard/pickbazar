@@ -12,50 +12,50 @@ import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { setMaintenanceDetails } from './utils/maintenance-utils';
 
-export function useSettings() {
-  const { locale } = useRouter();
+// export function useSettings() {
+//   const { locale } = useRouter();
 
-  const formattedOptions = {
-    language: locale,
-  };
+//   const formattedOptions = {
+//     language: locale,
+//   };
 
-  const { data, isLoading, error, isFetching } = useQuery<Settings, Error>(
-    [API_ENDPOINTS.SETTINGS, formattedOptions],
-    ({ queryKey, pageParam }) =>
-      client.settings.all(Object.assign({}, queryKey[1], pageParam))
-  );
-  const { isUnderMaintenance = false, maintenance = {} } = data?.options! ?? {};
-  setMaintenanceDetails(isUnderMaintenance, maintenance);
-  return {
-    settings: data?.options ?? {},
-    isLoading,
-    error,
-    isFetching,
-  };
-}
+//   const { data, isLoading, error, isFetching } = useQuery<Settings, Error>(
+//     [API_ENDPOINTS.SETTINGS, formattedOptions],
+//     ({ queryKey, pageParam }) =>
+//       client.settings.all(Object.assign({}, queryKey[1], pageParam))
+//   );
+//   const { isUnderMaintenance = false, maintenance = {} } = data?.options! ?? {};
+//   setMaintenanceDetails(isUnderMaintenance, maintenance);
+//   return {
+//     settings: data?.options ?? {},
+//     isLoading,
+//     error,
+//     isFetching,
+//   };
+// }
 
 export const useUploads = ({ onChange, defaultFiles }: any) => {
   const [files, setFiles] = useState<FileWithPath[]>(
     getPreviewImage(defaultFiles)
   );
 
-  const { mutate: upload, isLoading } = useMutation(client.settings.upload, {
-    onSuccess: (data) => {
-      if (onChange) {
-        const dataAfterRemoveTypename = data?.map(
-          ({ __typename, ...rest }: any) => rest
-        );
-        onChange(dataAfterRemoveTypename);
-        setFiles(getPreviewImage(dataAfterRemoveTypename));
-      }
-    },
-  });
+  // const { mutate: upload, isLoading } = useMutation(client.settings.upload, {
+  //   onSuccess: (data) => {
+  //     if (onChange) {
+  //       const dataAfterRemoveTypename = data?.map(
+  //         ({ __typename, ...rest }: any) => rest
+  //       );
+  //       onChange(dataAfterRemoveTypename);
+  //       setFiles(getPreviewImage(dataAfterRemoveTypename));
+  //     }
+  //   },
+  // });
 
-  function handleSubmit(data: File[]) {
-    upload(data);
-  }
+  // function handleSubmit(data: File[]) {
+  //   upload(data);
+  // }
 
-  return { mutate: handleSubmit, isLoading, files };
+  // return { mutate: handleSubmit, isLoading, files };
 };
 
 export function useSubscription() {

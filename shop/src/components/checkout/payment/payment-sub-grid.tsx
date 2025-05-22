@@ -6,7 +6,7 @@ import CashOnDelivery from '@/components/checkout/payment/cash-on-delivery';
 import { useAtom } from 'jotai';
 import { paymentSubGatewayAtom } from '@/store/checkout';
 import cn from 'classnames';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { PaymentGateway } from '@/types';
 import PaymentOnline from '@/components/checkout/payment/payment-online';
 import Image from 'next/image';

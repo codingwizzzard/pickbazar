@@ -8,7 +8,7 @@ import Link from '@/components/ui/link';
 import Logo from '@/components/ui/logo';
 import { useModalAction } from '@/components/ui/modal/modal.context';
 import SearchWithSuggestion from '@/components/ui/search/search-with-suggestion';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import {
   checkIsMaintenanceModeComing,
   checkIsMaintenanceModeStart,
@@ -78,7 +78,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
     checkIsShopMaintenanceModeStart,
   );
   const [isScrolling] = useAtom(checkIsScrollingStart);
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const siteHeaderRef = React.useRef(null);
   useActiveScroll(siteHeaderRef);
   const { width } = useWindowSize();
@@ -96,7 +96,7 @@ const HeaderMinimal = ({ layout }: { layout: string }) => {
             childClassName="flex justify-center items-center w-full gap-4"
           >
             <CountdownTimer
-              date={new Date(settings?.maintenance?.start as string)}
+              // date={new Date(settings?.maintenance?.start as string)}
               className="text-blue-600 [&>p]:bg-blue-200 [&>p]:p-2 [&>p]:text-xs [&>p]:text-blue-600"
               onComplete={() => setUnderMaintenanceStart(true)}
             />

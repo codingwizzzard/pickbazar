@@ -2,7 +2,7 @@ import MaintenanceMode from '@/components/maintenance';
 import ErrorMessage from '@/components/ui/error-message';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
 import { useModalAction } from '@/components/ui/modal/modal.context';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import {
   adminOnly,
   getAuthCredentials,
@@ -34,7 +34,7 @@ export const isInArray = (array: Date[], value: Date) => {
 };
 
 const Maintenance = ({ children }: MaintenanceProps) => {
-  const { settings, isLoading: settingLoading, error } = useSettings();
+  // const { settings, isLoading: settingLoading, error } = useSettings();
   const [_, setUnderMaintenanceIsComing] = useAtom(
     checkIsMaintenanceModeComing,
   );
@@ -50,95 +50,95 @@ const Maintenance = ({ children }: MaintenanceProps) => {
   const { reload } = router;
 
   // Use useMemo to avoid recomputing the date interval on every render
-  const dateInterVal = useMemo(() => {
-    if (
-      settings?.maintenance?.start &&
-      settings?.maintenance?.until &&
-      settings?.isUnderMaintenance
-    ) {
-      return eachMinuteOfInterval({
-        start: new Date(settings?.maintenance?.start),
-        end: new Date(settings?.maintenance?.until),
-      });
-    }
-    return [];
-  }, [
-    settings?.maintenance?.start,
-    settings?.maintenance?.until,
-    settings?.isUnderMaintenance,
-  ]);
+  // const dateInterVal = useMemo(() => {
+  //   if (
+  //     settings?.maintenance?.start &&
+  //     settings?.maintenance?.until &&
+  //     settings?.isUnderMaintenance
+  //   ) {
+  //     return eachMinuteOfInterval({
+  //       start: new Date(settings?.maintenance?.start),
+  //       end: new Date(settings?.maintenance?.until),
+  //     });
+  //   }
+  //   return [];
+  // }, [
+  //   settings?.maintenance?.start,
+  //   settings?.maintenance?.until,
+  //   settings?.isUnderMaintenance,
+  // ]);
 
   // Use useCallback to avoid creating new functions on every render
-  const handleMaintenanceCheck = useCallback(() => {
-    if (dateInterVal.length > 0) {
-      const beforeDay = isBefore(
-        new Date(),
-        new Date(settings?.maintenance?.start as string),
-      );
-      // Calculate maintenance start time
-      const maintenanceStartTime = new Date(
-        settings?.maintenance?.start as string,
-      );
-      const maintenanceEndTime = new Date(
-        settings?.maintenance?.until as string,
-      );
-      maintenanceStartTime.setMinutes(maintenanceStartTime.getMinutes());
-      // Check if the current time has passed the maintenance start time
-      const currentTime = new Date();
-      const checkIsMaintenanceStart =
-        currentTime >= maintenanceStartTime &&
-        currentTime < maintenanceEndTime &&
-        settings?.isUnderMaintenance;
-      const checkIsMaintenance = beforeDay && settings?.isUnderMaintenance;
-      setUnderMaintenanceStart(checkIsMaintenanceStart as boolean);
-      setUnderMaintenanceIsComing(checkIsMaintenance as boolean);
-    }
-  }, [
-    dateInterVal,
-    settings?.isUnderMaintenance,
-    settings?.maintenance?.start,
-    settings?.maintenance?.until,
-  ]);
+  // const handleMaintenanceCheck = useCallback(() => {
+  //   if (dateInterVal.length > 0) {
+  //     const beforeDay = isBefore(
+  //       new Date(),
+  //       new Date(settings?.maintenance?.start as string),
+  //     );
+  //     // Calculate maintenance start time
+  //     const maintenanceStartTime = new Date(
+  //       settings?.maintenance?.start as string,
+  //     );
+  //     const maintenanceEndTime = new Date(
+  //       settings?.maintenance?.until as string,
+  //     );
+  //     maintenanceStartTime.setMinutes(maintenanceStartTime.getMinutes());
+  //     // Check if the current time has passed the maintenance start time
+  //     const currentTime = new Date();
+  //     const checkIsMaintenanceStart =
+  //       currentTime >= maintenanceStartTime &&
+  //       currentTime < maintenanceEndTime &&
+  //       settings?.isUnderMaintenance;
+  //     const checkIsMaintenance = beforeDay && settings?.isUnderMaintenance;
+  //     setUnderMaintenanceStart(checkIsMaintenanceStart as boolean);
+  //     setUnderMaintenanceIsComing(checkIsMaintenance as boolean);
+  //   }
+  // }, [
+  //   dateInterVal,
+  //   settings?.isUnderMaintenance,
+  //   settings?.maintenance?.start,
+  //   settings?.maintenance?.until,
+  // ]);
 
   // Use useEffect to run the maintenance check only once
-  useEffect(() => {
-    handleMaintenanceCheck();
-  }, [handleMaintenanceCheck]);
+  // useEffect(() => {
+  //   handleMaintenanceCheck();
+  // }, [handleMaintenanceCheck]);
 
   let seenPopup = Cookies.get(NEWSLETTER_POPUP_MODAL_KEY);
   let seenReviewPopup = Cookies.get(REVIEW_POPUP_MODAL_KEY);
 
   // Use useCallback to avoid creating new functions on every render
-  const handlePromoPopup = useCallback(() => {
-    if (
-      Boolean(settings?.isPromoPopUp) &&
-      !underMaintenanceStart &&
-      !AccessAdminRoles &&
-      !Boolean(seenPopup)
-    ) {
-      let timer = setTimeout(
-        () =>
-          openModal('PROMO_POPUP_MODAL', {
-            isLoading: settingLoading,
-            popupData: settings?.promoPopup,
-          }),
-        Number(settings?.promoPopup?.popUpDelay),
-      );
-      return () => clearTimeout(timer);
-    }
-  }, [
-    settings?.isPromoPopUp,
-    settings?.promoPopup?.popUpDelay,
-    underMaintenanceStart,
-    AccessAdminRoles,
-    settingLoading,
-    seenPopup,
-  ]);
+  // const handlePromoPopup = useCallback(() => {
+  //   if (
+  //     Boolean(settings?.isPromoPopUp) &&
+  //     !underMaintenanceStart &&
+  //     !AccessAdminRoles &&
+  //     !Boolean(seenPopup)
+  //   ) {
+  //     let timer = setTimeout(
+  //       () =>
+  //         openModal('PROMO_POPUP_MODAL', {
+  //           isLoading: settingLoading,
+  //           popupData: settings?.promoPopup,
+  //         }),
+  //       Number(settings?.promoPopup?.popUpDelay),
+  //     );
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [
+  //   settings?.isPromoPopUp,
+  //   settings?.promoPopup?.popUpDelay,
+  //   underMaintenanceStart,
+  //   AccessAdminRoles,
+  //   settingLoading,
+  //   seenPopup,
+  // ]);
 
   // Use useEffect to run the promo popup only once
-  useEffect(() => {
-    handlePromoPopup();
-  }, [handlePromoPopup]);
+  // useEffect(() => {
+  //   handlePromoPopup();
+  // }, [handlePromoPopup]);
 
   // Use useCallback to avoid creating new functions on every render
   const handleReviewPopup = useCallback(() => {
@@ -146,7 +146,7 @@ const Maintenance = ({ children }: MaintenanceProps) => {
       me &&
       me?.last_order &&
       isEmpty(me?.last_order?.reviews) &&
-      Boolean(settings?.enableReviewPopup) &&
+      // Boolean(settings?.enableReviewPopup) &&
       !underMaintenanceStart &&
       !AccessAdminRoles &&
       !Boolean(seenReviewPopup) &&
@@ -163,7 +163,7 @@ const Maintenance = ({ children }: MaintenanceProps) => {
     seenReviewPopup,
     underMaintenanceStart,
     AccessAdminRoles,
-    settings?.enableReviewPopup,
+    // settings?.enableReviewPopup,
     seenPopup,
     isLoading,
   ]);
@@ -173,18 +173,18 @@ const Maintenance = ({ children }: MaintenanceProps) => {
     handleReviewPopup();
   }, [handleReviewPopup]);
 
-  if (settingLoading) {
-    return <Spinner />;
-  }
+  // if (settingLoading) {
+  //   return <Spinner />;
+  // }
 
-  if (error) return <ErrorMessage message={error.message} />;
+  // if (error) return <ErrorMessage message={error.message} />;
 
   if (underMaintenanceStart && !AccessAdminRoles) {
     return (
       <main
-        className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
+        // className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
       >
-        <MaintenanceMode
+        {/* <MaintenanceMode
           data={{
             aboutUsTitle: settings?.maintenance?.aboutUsTitle ?? '',
             aboutUsDescription: settings?.maintenance?.aboutUsDescription ?? '',
@@ -212,13 +212,13 @@ const Maintenance = ({ children }: MaintenanceProps) => {
               />
             </div>
           }
-        />
+        /> */}
       </main>
     );
   }
   return (
     <main
-      className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
+      // className={`${settings?.siteTitle}-version-${process?.env?.NEXT_PUBLIC_VERSION}`}
     >
       {children}
     </main>

@@ -8,10 +8,10 @@ import { API_ENDPOINTS } from './client/api-endpoints';
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(
-    [API_ENDPOINTS.SETTINGS, { language: locale }],
-    ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions),
-  );
+  // await queryClient.prefetchQuery(
+  //   [API_ENDPOINTS.SETTINGS, { language: locale }],
+  //   ({ queryKey }) => client.settings.all(queryKey[1] as SettingsQueryOptions),
+  // );
   await queryClient.prefetchQuery(
     [API_ENDPOINTS.NOTIFY_LOGS, { limit: 20, language: locale }],
     ({ queryKey }) =>

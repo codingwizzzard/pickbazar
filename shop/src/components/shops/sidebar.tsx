@@ -10,7 +10,7 @@ import { getIcon } from '@/lib/get-icon';
 import { productPlaceholder } from '@/lib/placeholders';
 import * as socialIcons from '@/components/icons/social';
 import type { Shop } from '@/types';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import dayjs from 'dayjs';
 import { ShopFaqIcon } from '@/components/icons/shop/faq';
 import { ShopWebIcon } from '@/components/icons/shop/web';
@@ -33,7 +33,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
 }) => {
   const { t } = useTranslation('common');
   const { openModal } = useModalAction();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   function handleMoreInfoModal() {
     return openModal('SHOP_INFO', { shop });
@@ -122,7 +122,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
               </div>
 
               <div className="grid grid-cols-[repeat(auto-fill,minmax(70px,1fr))] text-sm gap-1.5 p-6">
-                {settings?.enableCoupons ? (
+                {/* {settings?.enableCoupons ? ( */}
                   <Link
                     className="flex flex-col items-center justify-center p-2 pt-3.5 pb-3 text-gray-500 rounded bg-gray-50 group hover:text-accent hover:bg-accent/10 transition-all"
                     href={`/shops/${shop?.slug}${Routes.coupons}`}
@@ -130,7 +130,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                     <ShopCouponIcon className="w-7 h-7" />
                     <span className="pt-2 text-sm">Coupons</span>
                   </Link>
-                ) : null}
+                {/* ) : null} */}
 
                 <Link
                   href={`/shops/${shop?.slug}${Routes.contactUs}`}
@@ -151,7 +151,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                   </a>
                 ) : null}
 
-                {settings?.enableTerms ? (
+                {/* {settings?.enableTerms ? ( */}
                   <Link
                     href={`/shops/${shop?.slug}${Routes.terms}`}
                     className="flex flex-col items-center justify-center p-2 pt-3.5 pb-3 text-gray-500 rounded bg-gray-50 group hover:text-accent hover:bg-accent/10 transition-all"
@@ -159,7 +159,7 @@ const ShopSidebar: React.FC<ShopSidebarProps> = ({
                     <ShopTermsIcon className="w-[26px] h-[26px]" />
                     <span className="pt-2 text-sm">Terms</span>
                   </Link>
-                ) : null}
+                {/* ) : null} */}
 
                 <Link
                   href={`/shops/${shop?.slug}/faqs`}

@@ -4,12 +4,12 @@ import Seo from '@/components/seo/seo';
 import { useRouter } from 'next/router';
 import { useOrder } from '@/framework/order';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 export { getServerSideProps } from '@/framework/order.ssr';
 
 export default function OrderPage() {
   const { query } = useRouter();
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
 
   const { order, isLoading, isFetching } = useOrder({
     tracking_number: query.tracking_number!.toString(),
@@ -22,11 +22,11 @@ export default function OrderPage() {
   return (
     <>
       <Seo noindex={true} nofollow={true} />
-      <Order
+      {/* <Order
         order={order}
         loadingStatus={!isLoading && isFetching}
         settings={settings}
-      />
+      /> */}
     </>
   );
 }

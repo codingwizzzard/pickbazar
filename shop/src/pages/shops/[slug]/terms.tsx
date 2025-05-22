@@ -13,7 +13,7 @@ import NotFound from '@/components/ui/not-found';
 import { isEmpty } from 'lodash';
 import { TermsAndConditions } from '@/types';
 import Spinner from '@/components/ui/loaders/spinner/spinner';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { Routes } from '@/config/routes';
 export default function ShopTermsPage() {
   const { t } = useTranslation('terms');
@@ -22,10 +22,10 @@ export default function ShopTermsPage() {
     query: { slug },
   } = useRouter();
   const { data: shopData } = useShop({ slug: slug as string });
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   const shopId = shopData?.id!;
 
-  !settings?.enableTerms ? router.replace(Routes.shops) : null;
+  // !settings?.enableTerms ? router.replace(Routes.shops) : null;
 
   const {
     termsAndConditions,

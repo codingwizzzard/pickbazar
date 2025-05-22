@@ -10,9 +10,9 @@ const CartCounterButton = () => {
   const { t } = useTranslation();
   const { totalUniqueItems, total } = useCart();
   const [_, setDisplayCart] = useAtom(drawerAtom);
-  const { price: totalPrice } = usePrice({
-    amount: total,
-  });
+  // const { price: totalPrice } = usePrice({
+  //   amount: total,
+  // });
   function handleCartSidebar() {
     setDisplayCart({ display: true, view: 'cart' });
   }
@@ -28,7 +28,8 @@ const CartCounterButton = () => {
         </span>
       </span>
       <span className="w-full px-2 py-2 mt-3 rounded bg-light text-accent">
-        {totalPrice}
+        {/* {totalPrice} */}
+        {500}
       </span>
     </button>
   );

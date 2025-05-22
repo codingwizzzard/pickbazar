@@ -12,7 +12,7 @@ import { AddressType } from '@/framework/utils/constants';
 import { GoogleMapLocation } from '@/types';
 import { useUpdateUser } from '@/framework/user';
 import GooglePlacesAutocomplete from '@/components/form/google-places-autocomplete';
-import { useSettings } from '@/framework/settings';
+// import { useSettings } from '@/framework/settings';
 import { useAtom } from 'jotai';
 import { setNewAddress } from '@/lib/constants';
 
@@ -50,7 +50,7 @@ export const AddressForm: React.FC<any> = ({
   isLoading,
 }) => {
   const { t } = useTranslation('common');
-  const { settings } = useSettings();
+  // const { settings } = useSettings();
   return (
     <Form<FormValues>
       onSubmit={onSubmit}
